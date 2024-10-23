@@ -1,0 +1,57 @@
+
+
+DataFrame Info for table order:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 6471 entries, 0 to 6470
+Data columns (total 6 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   order_id    6471 non-null   int64  
+ 1   account_id  6471 non-null   int64  
+ 2   bank_to     6471 non-null   object 
+ 3   account_to  6471 non-null   int64  
+ 4   amount      6471 non-null   float64
+ 5   k_symbol    6471 non-null   object 
+dtypes: float64(1), int64(3), object(2)
+memory usage: 303.5+ KB
+
+
+Number of Unique Items in order:
+order_id      6471
+account_id    3758
+bank_to         13
+account_to    6446
+amount        4412
+k_symbol         5
+dtype: int64
+
+
+Unique Items in Each Column for table order:
+order_id      [29401, 29402, 29403, 29404, 29405, 29406, 294...
+account_id    [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 1...
+bank_to       [YZ, ST, QR, WX, CD, AB, UV, GH, IJ, KL, EF, M...
+account_to    [87144583, 89597016, 13943797, 83084338, 24485...
+amount        [2452.0, 3372.7, 7266.0, 1135.0, 327.0, 3539.0...
+k_symbol                      [SIPO, UVER, , POJISTNE, LEASING]
+dtype: object
+
+
+Table: order
++---+----------+------------+---------+------------+--------+----------+
+|   | order_id | account_id | bank_to | account_to | amount | k_symbol |
++---+----------+------------+---------+------------+--------+----------+
+| 0 |  29401   |     1      |   YZ    |  87144583  | 2452.0 |   SIPO   |
+| 1 |  29402   |     2      |   ST    |  89597016  | 3372.7 |   UVER   |
+| 2 |  29403   |     2      |   QR    |  13943797  | 7266.0 |   SIPO   |
+| 3 |  29404   |     3      |   WX    |  83084338  | 1135.0 |   SIPO   |
+| 4 |  29405   |     3      |   CD    |  24485939  | 327.0  |          |
++---+----------+------------+---------+------------+--------+----------+
++------+----------+------------+---------+------------+--------+----------+
+|      | order_id | account_id | bank_to | account_to | amount | k_symbol |
++------+----------+------------+---------+------------+--------+----------+
+| 6466 |  46334   |   11362    |   YZ    |  70641225  | 4780.0 |   SIPO   |
+| 6467 |  46335   |   11362    |   MN    |  78507822  |  56.0  |          |
+| 6468 |  46336   |   11362    |   ST    |  40799850  | 330.0  | POJISTNE |
+| 6469 |  46337   |   11362    |   KL    |  20009470  | 129.0  |          |
+| 6470 |  46338   |   11362    |   MN    |  61540514  | 5392.0 |   UVER   |
++------+----------+------------+---------+------------+--------+----------+

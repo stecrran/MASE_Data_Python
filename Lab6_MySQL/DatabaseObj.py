@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sqlalchemy import create_engine, inspect
 from tabulate import tabulate
 
-class DBConnection:
+class DBConnection_Alchemy:
     def __init__(self, connect_info):
         # Unpack connection details and set up database configuration
         self.host, self.user, self.password, self.port, self.database = connect_info
@@ -26,7 +26,7 @@ class DBConnection:
                 print("Connection established successfully.")
                 inspector = inspect(self.mydb)
                 table_names = inspector.get_table_names()
-                print("Tables in the database:", ", ".join(table_names))
+                print("Tables in the database:\n*", "\n* ".join(table_names))
         except Exception as error:
             # Handle connection errors
             print("Error: Unable to connect to the MySQL database.")
