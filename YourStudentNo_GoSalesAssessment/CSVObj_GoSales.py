@@ -8,7 +8,7 @@ from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import textwrap
 
-"""
+
 class DBConnection_Alchemy:
     def __init__(self, connect_info):
         # Unpack connection details and set up database configuration
@@ -38,7 +38,7 @@ class DBConnection_Alchemy:
             print("Error: Unable to connect to the MySQL database.")
             print(f"Error Details: {error}")
             self.mydb = None  # Ensure connection is None if failed
-"""
+
 
 class AnalyseCSV:
     def __init__(self, urls):
@@ -114,14 +114,14 @@ class AnalyseCSV:
             print(f"Error during EDA on table: {tablenme}: {error}")
 
 
-        """
-        This function merges two dataframes: one containing product information (from go_products) and 
-        another containing daily sales data (from go_daily_sales). The merge is done based on the 
-        'Product number' column, creating a comprehensive dataset for further analysis.
+    """
+    This function merges two dataframes: one containing product information (from go_products) and 
+    another containing daily sales data (from go_daily_sales). The merge is done based on the 
+    'Product number' column, creating a comprehensive dataset for further analysis.
 
-        This merged dataframe ('self.merged_df') becomes the central dataset used for further analysis,
-        such as computing total sales, profit, and quantities sold by product.
-        """
+    This merged dataframe ('self.merged_df') becomes the central dataset used for further analysis,
+    such as computing total sales, profit, and quantities sold by product.
+    """
     def MergeDataFrame(self):
         print("\n\nMerged Dataframe")
 
@@ -203,7 +203,7 @@ class AnalyseCSV:
         # Set the title of the chart to be Top 10 Products based on Sales and Profit
         # Include Legend
         ax.bar(resultset['Product'], resultset['Total Sales'], label='Total Sales', color='red')
-        ax.bar(resultset['Product'], resultset['Total Sales'], label='Total Sales', color='blue', bottom=resultset['Total Sales'])
+        ax.bar(resultset['Product'], resultset['Total Profit'], label='Total Profit', color='blue', bottom=resultset['Total Sales'])
         ax.set_xlabel('Product')
         ax.set_ylabel('Amount in €')
         ax.set_title('Top 10 Product based on Sales and Profit')
@@ -217,6 +217,10 @@ class AnalyseCSV:
         toolbar = NavigationToolbar2Tk(canvas, frame)
         canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         toolbar.update()
+
+        # close tk window
+        close_button = tk.Button(root, text="Close", command=lambda: [root.destroy(), plt.close(fig)])
+        close_button.pack(pady=10)
 
         # start the Tkinter main loop
         root.mainloop()
@@ -251,7 +255,7 @@ class AnalyseCSV:
         print(f"Total Quantity Sold: {total_sold}")
         print(f"Sales: €{round(total_sales,2)}")
         print(f"Profit: €{round(total_profit,2)}")
-        tabulate(tabulate(filtered, headers='keys', tablefmt='pretty', showindex=True))
+        print(tabulate(filtered, headers='keys', tablefmt='pretty', showindex=True))
 
         # Convert the 'Date' column to datetime
         orders['Date'] = pd.to_datetime(orders['Date'], dayfirst=True)
@@ -295,8 +299,13 @@ class AnalyseCSV:
         canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         toolbar.update()
 
+        # close tk window
+        close_button = tk.Button(root, text="Close", command=lambda: [root.destroy(), plt.close(fig)])
+        close_button.pack(pady=10)
+
         # Start the Tkinter main loop
         root.mainloop()
+
 
     """ 
     This function prints the first and last few rows of a given dataframe in a nicely formatted way.

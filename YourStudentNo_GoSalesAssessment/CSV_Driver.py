@@ -1,12 +1,12 @@
 from matplotlib.pyplot import table
 
 from CSVObj_GoSales import AnalyseCSV
-#from CSVObj_GoSales import DBConnection_Alchemy
+from CSVObj_GoSales import DBConnection_Alchemy
 
 
 # This function orchestrates the loading, analysing, and displaying of sales and product data.
 def main():
-    """
+
     print("Getting CSV files from server")
     host = "db.relational-data.org"
     user = "guest"
@@ -19,9 +19,9 @@ def main():
     db_info = (host, user, password, port, database)
     # pass the tuple to the DBConnecction class
     relationalDB = DBConnection_Alchemy(db_info)
-    """
 
-    #Define the URLs for two CSV files:
+
+    # Define the URLs for two CSV files:
     go_daily_sales_URL = "https://davmase.z6.web.core.windows.net/GoSales/go_daily_sales.csv"
     go_products_URL = "https://davmase.z6.web.core.windows.net/GoSales/go_products.csv"
 
