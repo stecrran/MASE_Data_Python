@@ -12,7 +12,8 @@ def main():
     my_car.display_details()
 
     print(my_car._make)
-    print(my_car.__model)
+    print(my_car.__get_model())
+    #print(my_car.__model)
 
 if __name__ == "__main__":
     main()

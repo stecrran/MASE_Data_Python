@@ -67,8 +67,8 @@ class AnalyseCSV:
         # Print a message to indicate which tables (CSV files) are being used.
         print("\n\nUsing tables:\ngo_daily_sales\ngo_products")
 
-        # Call the `preformEDA` method for 'go_daily_sales' to load and analyse the daily sales CSV file.
-        # Call the `preformEDA` method for 'go_products' to load and analyse the products CSV file.
+        # Call the `performEDA` method for 'go_daily_sales' to load and analyse the daily sales CSV file.
+        # Call the `performEDA` method for 'go_products' to load and analyse the products CSV file.
         self.performEDA("go_daily_sales", self.go_daily_sales_URL)
         self.performEDA("go_products", self.go_products_URL)
 
@@ -167,17 +167,23 @@ class AnalyseCSV:
     def analyseTop10QuantitySales(self):
         print("Analyse Top 10 Quantity Sales")
 
-        product_sums = self.merged_df.groupby('Product').agg({'Product number': 'count', 'Unit price': 'first',
+        # Group the merged dataframe by 'Product' to aggregate values such as the total sales, total quantity sold, and total profit.
+        # 'Product' is in go_products.csv
+        product_sums = self.merged_df.groupby('Product').agg({'Product number': 'count', 'Unit price': 'first', # see "first.txt", "count.txt"
         'Quantity': 'sum', 'Total Sales': 'sum', 'Total Profit': 'sum'}).reset_index()
 
+        # Sort the products to find the top 10 products based on their total sales.
         resultset = product_sums.nlargest(n=10, columns=['Total Sales']).sort_values('Total Sales', ascending=False)
 
+        # Display the top 10 products in a formatted table with their respective sales and profit values.
         print(tabulate(product_sums.nlargest(n=10, columns=['Total Sales']), headers=['Product', 'No of Sales', 'Unit Price', 'Quantity Sold',
         'Total Sales', 'Total Profit'], floatfmt=".2f"))
 
-        # wrapping text for x-labels
+        # Create a bar chart to visualise the total sales and total profit for these top 10 products.
+        # Wrap long product names to ensure the x-axis labels remain readable.
         wrapped_labels = [textwrap.fill(label, 10) for label in resultset['Product']]
 
+        # Display the results in a Tkinter window with two bar charts (one for sales and one for profit).
         # create the main window
         root = tk.Tk()
         root.title("Top 10 Products")
@@ -187,7 +193,7 @@ class AnalyseCSV:
         frame.pack(expand=True, fill=tk.BOTH)
 
         # create Matplotlib figure and subplot
-        fig, ax = plt.subplots(figsize=(12,8))
+        fig, ax = plt.subplots(figsize=(12,8)) # see 'subplot.txt'
 
         # modify the x and y labels on the axis to ensure nonscientific notation (i.e. no '1e6')
         # text is wrapped where too long
@@ -209,6 +215,7 @@ class AnalyseCSV:
         ax.set_title('Top 10 Product based on Sales and Profit')
         ax.legend()
 
+        # Use a Tkinter canvas to show the plot with a toolbar for interaction
         # create a Matplotlib canvas within the frame
         canvas = FigureCanvasTkAgg(fig, master=frame)
         canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
@@ -236,13 +243,13 @@ class AnalyseCSV:
         print("Analyse Product by ID")
 
         # Filter the dataframe for the product with the given product ID.
-        result = self.merged_df[self.merged_df['Product number'] == prod_ID]
+        result = self.merged_df[self.merged_df['Product number'] == prod_ID] # see merged.txt
         orders = result[['Date', 'Quantity', 'Unit sale price', 'Total Sales', 'Total Profit']].copy()
         filtered = orders[orders['Unit sale price'] != 0]
 
         # Compute statistics like total quantity sold, total sales, total profit, and number of orders.
         print("Product Info based on ID: {0}\t{1}".format(prod_ID, result['Product'].iat[0]))
-        unitPrice = result['Unit price'].iat[0]
+        unitPrice = result['Unit price'].iat[0] # see iat.txt
         unitCost = result['Unit cost'].iat[0]
         total_sold = filtered["Quantity"].sum()
         total_sales = filtered['Total Sales'].sum()
