@@ -66,8 +66,6 @@ class SalesDB:
             self.sales = frame.copy()
 
 
-
-
     def MergeDataFrame(self):
         print("Merging")
         # Merges `self.sales` and `self.products` on a common column, `ProductID`, using an inner join.
@@ -204,9 +202,35 @@ class SalesDB:
     def deliveryDispatchAnalysis(self):
         print("Delivery Dispatch")
         # Analyses dispatch times by categorising them into time ranges and calculating the average shipping days.
-        # Calculates the average number of days between order and dispatch dates.
+        startdate = pd.to_datetime(self.sales['OrderDate'], errors='coerce',dayfirst=True)
+        enddate = pd.to_datetime(self.sales['DispatchDate'], errors='coerce', dayfirst=True)
+
+        self.sales['DispatchTimeDays'] = (enddate - startdate).dt.days
+
+        # Define dispatch time ranges
+        dispatch_range = [0, 7, 14, 30]
+        labels = ['<7 days', '7-14 days', '14-30 days']
+
         # Categorises dispatch times into ranges: <7 days, 7-14 days, and 14-30 days.
+        self.sales['DispatchTimeRange'] = pd.cut(self.sales['DispatchTimeDays'], bins=dispatch_range, labels=labels)
+
+        # Calculates the average number of days between order and dispatch dates.
+        avg_diff = self.sales['DispatchTimeDays'].mean()
+        print(f"Average shipping days: {avg_diff :.2f}")
+
         # Counts occurrences of each dispatch time category.
+        count_orders = self.sales.groupby('DispatchTimeRange', observed=False).agg({'DispatchTimeDays': 'count'}).reset_index()
+
         # Prints the average shipping days and counts in each category in a formatted table.
+        print(tabulate(count_orders, headers='keys', tablefmt='grid'))
+
         # Plots a bar chart of dispatch time categories with a line showing the average shipping days.
+        fig, ax = plt.subplots(figsize=(10, 8))
+        ax.bar(count_orders['DispatchTimeRange'], count_orders['DispatchTimeDays'], label=('Dispatch Time Categories'), color='blue')
+        ax.set_title(f"Order Dispatch. Average: {avg_diff :.2f}")
+        ax.set_xlabel("Dispatch Time Category")
+        ax.set_ylabel("Count")
+        ax.legend()
+
         # Displays the bar chart and average shipping days.
+        plt.show()
