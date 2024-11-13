@@ -1,0 +1,7 @@
+ - Pull directly from database into Python instead of using CSV files
+ - Include functions to merge all required data using Pandas
+ - Create table with all required information
+ - Visualise gross revenue (USD) based on genre
+ - Group by year, visualise
+ - Determine what additional information could be presented
+ - Look at actors v. revenue
