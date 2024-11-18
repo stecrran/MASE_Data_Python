@@ -2,6 +2,10 @@
  - Include functions to merge all required data using Pandas
  - Create table with all required information
  - Visualise gross revenue (USD) based on genre
- - Group by year, visualise
- - Determine what additional information could be presented
+ - Look at Profit/Loss, % or Ratio
+ - Group genre by year, visualise
+ - Determine what additional information could be presented e.g. GR: Other countries
  - Look at actors v. revenue
+
+create resultset - write query for actors etc... add dropdown to allow user pick field. When user picks actor -> list of movies appears which star that actor. 
+"search actor bt name" - use %like% where genre, use user input letter to match e.g. search 'ste' to return stephen, stefano, stewart.... Use code and GUI that Karol provided on Moodle.
