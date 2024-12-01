@@ -1,0 +1,11 @@
+CustomerID,Name,Email,Phone,Address,Image
+1,Alice Johnson,alice@example.com,123-456-7890,123 Maple St,image1.png
+2,Bob Smith,bob@example.com,234-567-8901,456 Oak St,image2.png
+3,Carol White,carol@example.com,345-678-9012,789 Pine St,image3.png
+4,David Brown,david@example.com,456-789-0123,321 Birch St,image4.png
+5,Eve Black,eve@example.com,567-890-1234,654 Cedar St,image5.png
+6,Frank Green,frank@example.com,678-901-2345,987 Walnut St,image6.png
+7,Grace Harris,grace@example.com,789-012-3456,147 Spruce St,image7.png
+8,Hank Taylor,hank@example.com,890-123-4567,258 Elm St,image8.png
+9,Ivy Wilson,ivy@example.com,901-234-5678,369 Willow St,image9.png
+10,John Doe,john@example.com,012-345-6789,741 Redwood St,image10.png

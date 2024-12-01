@@ -1,0 +1,2602 @@
+Database Connection Test Results
+========================================
+Current database/schema: financial
+
+Available schemas:
+ - Accidents
+ - Ad
+ - AdventureWorks2014
+ - Airline
+ - Atherosclerosis
+ - AustralianFootball
+ - Basketball_men
+ - Basketball_women
+ - Bench
+ - Bench2
+ - Bench3
+ - Bench4
+ - Bench5
+ - Bench6
+ - Biodegradability
+ - Bupa
+ - CDESchools
+ - CORA
+ - Carcinogenesis
+ - ChEMBL
+ - Chess
+ - Chinook
+ - CiteSeer
+ - ConsumerExpenditures
+ - Countries
+ - CraftBeer
+ - Credit
+ - DCG
+ - Dallas
+ - Dunur
+ - Elti
+ - ErgastF1
+ - FNHK
+ - Facebook
+ - Financial_ijs
+ - Financial_std
+ - FlexiBee
+ - GOSales
+ - Grants
+ - Hepatitis_std
+ - Hockey
+ - Hockey_Yeti
+ - IMDB_1R
+ - KRK
+ - Mesh
+ - Mondial
+ - Mondial_Tutorial
+ - Mondial_geo
+ - Mooney_Family
+ - MuskLarge
+ - MuskSmall
+ - NBA
+ - NCAA
+ - OpenML_2016
+ - PTE
+ - Pima
+ - PremierLeague
+ - PubMed_Diabetes
+ - Pyrimidine
+ - SAP
+ - SAT
+ - SFScores
+ - SalesDB
+ - Same_gen
+ - Seznam
+ - Shakespeare
+ - Simpsons
+ - Student_loan
+ - TalkingData
+ - Telstra
+ - Toxicology
+ - Triazine
+ - TubePricing
+ - UTube
+ - UW_std
+ - VisualGenome
+ - Walmart
+ - Walmart_2014
+ - WebKP
+ - Yelp
+ - YelpDataset3
+ - YelpDataset3_disc_clean
+ - arnaud_DSSTOX
+ - arnaud_NWEcensusMid2014
+ - arnaud_citeseer
+ - ccs
+ - classicmodels
+ - cs
+ - ctu_20news
+ - ctu_KDD_Cup_2009
+ - ctu_adult
+ - ctu_auta
+ - ctu_crossSchema1
+ - ctu_crossSchema2
+ - ctu_datatype_benchmark
+ - ctu_deals
+ - ctu_ecoli
+ - ctu_fairytale
+ - ctu_feature_data
+ - ctu_feature_func
+ - ctu_feature_temp
+ - ctu_financial
+ - ctu_gaussian
+ - ctu_metalearning
+ - ctu_mushrooms
+ - ctu_outliers
+ - ctu_phishing
+ - ctu_titanic
+ - ctu_vondreli
+ - employee
+ - financial
+ - ftp
+ - geneea
+ - genes
+ - imdb_MovieLens
+ - imdb_full
+ - imdb_ijs
+ - imdb_small
+ - information_schema
+ - lahman_2014
+ - legalActs
+ - medical
+ - meta
+ - mutagenesis
+ - mutagenesis_188
+ - mutagenesis_42
+ - mysql
+ - nations
+ - nhl_draft
+ - northwind
+ - performance_schema
+ - pubs
+ - restbase
+ - sakila
+ - stats
+ - stats_CEB
+ - sys
+ - tmp
+ - tpcc
+ - tpcd
+ - tpcds
+ - tpce
+ - tpch
+ - trains
+ - twitterfromsearch4_20101001
+ - university
+ - world
+
+Tables in the current schema (financial):
+ - account
+ - card
+ - client
+ - disp
+ - district
+ - loan
+ - order
+ - trans
+
+Tables in all schemas:
+
+Schema: Accidents
+  - nesreca
+  - oseba
+  - upravna_enota
+
+Schema: Ad
+  - ad
+
+Schema: AdventureWorks2014
+  - AWBuildVersion
+  - Address
+  - AddressType
+  - BillOfMaterials
+  - BusinessEntity
+  - BusinessEntityAddress
+  - BusinessEntityContact
+  - ContactType
+  - CountryRegion
+  - CountryRegionCurrency
+  - CreditCard
+  - Culture
+  - Currency
+  - CurrencyRate
+  - Customer
+  - DatabaseLog
+  - Department
+  - Document
+  - EmailAddress
+  - Employee
+  - EmployeeDepartmentHistory
+  - EmployeePayHistory
+  - ErrorLog
+  - Illustration
+  - JobCandidate
+  - Location
+  - Password
+  - Person
+  - PersonCreditCard
+  - PersonPhone
+  - PhoneNumberType
+  - Product
+  - ProductCategory
+  - ProductCostHistory
+  - ProductDescription
+  - ProductDocument
+  - ProductInventory
+  - ProductListPriceHistory
+  - ProductModel
+  - ProductModelIllustration
+  - ProductModelProductDescriptionCulture
+  - ProductPhoto
+  - ProductProductPhoto
+  - ProductReview
+  - ProductSubcategory
+  - ProductVendor
+  - PurchaseOrderDetail
+  - PurchaseOrderHeader
+  - SalesOrderDetail
+  - SalesOrderHeader
+  - SalesOrderHeaderSalesReason
+  - SalesPerson
+  - SalesPersonQuotaHistory
+  - SalesReason
+  - SalesTaxRate
+  - SalesTerritory
+  - SalesTerritoryHistory
+  - ScrapReason
+  - Shift
+  - ShipMethod
+  - ShoppingCartItem
+  - SpecialOffer
+  - SpecialOfferProduct
+  - StateProvince
+  - Store
+  - TransactionHistory
+  - TransactionHistoryArchive
+  - UnitMeasure
+  - Vendor
+  - WorkOrder
+  - WorkOrderRouting
+
+Schema: Airline
+  - L_AIRLINE_ID
+  - L_AIRPORT
+  - L_AIRPORT_ID
+  - L_AIRPORT_SEQ_ID
+  - L_CANCELLATION
+  - L_CITY_MARKET_ID
+  - L_DEPARRBLK
+  - L_DISTANCE_GROUP_250
+  - L_DIVERSIONS
+  - L_MONTHS
+  - L_ONTIME_DELAY_GROUPS
+  - L_QUARTERS
+  - L_STATE_ABR_AVIATION
+  - L_STATE_FIPS
+  - L_UNIQUE_CARRIERS
+  - L_WEEKDAYS
+  - L_WORLD_AREA_CODES
+  - L_YESNO_RESP
+  - On_Time_On_Time_Performance_2016_1
+
+Schema: Atherosclerosis
+  - Contr
+  - Death
+  - Entry
+  - Letter
+
+Schema: AustralianFootball
+  - match_stats
+  - matches
+  - players
+  - teams
+
+Schema: Basketball_men
+  - awards_coaches
+  - awards_players
+  - coaches
+  - draft
+  - player_allstar
+  - players
+  - players_teams
+  - series_post
+  - teams
+
+Schema: Basketball_women
+  - awards_players
+  - coaches
+  - draft
+  - players
+  - players_teams
+  - series_post
+  - teams
+  - teams_post
+
+Schema: Bench
+  - ADDRESS
+  - ADDRESSTYPE
+  - ALL_PLUGINS
+  - APPLICABLE_ROLES
+  - AWBUILDVERSION
+  - AWBuildVersion
+  - Address
+  - AddressType
+  - Attributes
+  - BILLOFMATERIALS
+  - BUSINESSENTITY
+  - BUSINESSENTITYADDRESS
+  - BUSINESSENTITYCONTACT
+  - BillOfMaterials
+  - Business
+  - BusinessEntity
+  - BusinessEntityAddress
+  - BusinessEntityContact
+  - CHARACTER_SETS
+  - CLIENT_STATISTICS
+  - COLLATIONS
+  - COLLATION_CHARACTER_SET_APPLICABILITY
+  - COLUMNS
+  - COLUMN_PRIVILEGES
+  - CONTACTTYPE
+  - CONTR
+  - COUNTRYREGION
+  - COUNTRYREGIONCURRENCY
+  - CREDITCARD
+  - CULTURE
+  - CURRENCY
+  - CURRENCYRATE
+  - CUSTOMER
+  - C_Customer
+  - C_District
+  - C_History
+  - C_Item
+  - C_New_Order
+  - C_Order
+  - C_Order_Line
+  - C_Stock
+  - C_Warehouse
+  - Checkins
+  - City
+  - ContactType
+  - Country
+  - CountryLanguage
+  - CountryRegion
+  - CountryRegionCurrency
+  - CreditCard
+  - Culture
+  - Currency
+  - CurrencyRate
+  - Customer
+  - Customers
+  - DATABASELOG
+  - DEATH
+  - DEPARTMENT
+  - DOCUMENT
+  - DatabaseLog
+  - Demog
+  - Department
+  - Document
+  - EMAILADDRESS
+  - EMPLOYEE
+  - EMPLOYEEDEPARTMENTHISTORY
+  - EMPLOYEEPAYHISTORY
+  - ENABLED_ROLES
+  - ENGINES
+  - ENTRY
+  - ERRORLOG
+  - EVENTS
+  - E_ACCOUNT_PERMISSION
+  - E_ADDRESS
+  - E_BROKER
+  - E_CASH_TRANSACTION
+  - E_CHARGE
+  - E_COMMISSION_RATE
+  - E_COMPANY
+  - E_COMPANY_COMPETITOR
+  - E_CUSTOMER
+  - E_CUSTOMER_ACCOUNT
+  - E_CUSTOMER_TAXRATE
+  - E_DAILY_MARKET
+  - E_EXCHANGE
+  - E_FINANCIAL
+  - E_HOLDING
+  - E_HOLDING_HISTORY
+  - E_HOLDING_SUMMARY
+  - E_INDUSTRY
+  - E_LAST_TRADE
+  - E_NEWS_ITEM
+  - E_NEWS_XREF
+  - E_SECTOR
+  - E_SECURITY
+  - E_SETTLEMENT
+  - E_STATUS_TYPE
+  - E_TAXRATE
+  - E_TRADE
+  - E_TRADE_HISTORY
+  - E_TRADE_REQUEST
+  - E_TRADE_TYPE
+  - E_WATCH_ITEM
+  - E_WATCH_LIST
+  - E_ZIP_CODE
+  - EmailAddress
+  - Employee
+  - EmployeeDepartmentHistory
+  - EmployeePayHistory
+  - ErrorLog
+  - FILES
+  - GLOBAL_STATUS
+  - GLOBAL_VARIABLES
+  - ILLUSTRATION
+  - INDEX_STATISTICS
+  - INNODB_BUFFER_PAGE
+  - INNODB_BUFFER_PAGE_LRU
+  - INNODB_BUFFER_POOL_STATS
+  - INNODB_CHANGED_PAGES
+  - INNODB_CMP
+  - INNODB_CMPMEM
+  - INNODB_CMPMEM_RESET
+  - INNODB_CMP_PER_INDEX
+  - INNODB_CMP_PER_INDEX_RESET
+  - INNODB_CMP_RESET
+  - INNODB_FT_BEING_DELETED
+  - INNODB_FT_CONFIG
+  - INNODB_FT_DEFAULT_STOPWORD
+  - INNODB_FT_DELETED
+  - INNODB_FT_INDEX_CACHE
+  - INNODB_FT_INDEX_TABLE
+  - INNODB_LOCKS
+  - INNODB_LOCK_WAITS
+  - INNODB_METRICS
+  - INNODB_SYS_COLUMNS
+  - INNODB_SYS_DATAFILES
+  - INNODB_SYS_FIELDS
+  - INNODB_SYS_FOREIGN
+  - INNODB_SYS_FOREIGN_COLS
+  - INNODB_SYS_INDEXES
+  - INNODB_SYS_TABLES
+  - INNODB_SYS_TABLESPACES
+  - INNODB_SYS_TABLESTATS
+  - INNODB_TRX
+  - Illustration
+  - JOBCANDIDATE
+  - JobCandidate
+  - KEY_CACHES
+  - KEY_COLUMN_USAGE
+  - LETTER
+  - LOCATION
+  - L_AIRLINE_ID
+  - L_AIRPORT
+  - L_AIRPORT_ID
+  - L_AIRPORT_SEQ_ID
+  - L_CANCELLATION
+  - L_CITY_MARKET_ID
+  - L_DEPARRBLK
+  - L_DISTANCE_GROUP_250
+  - L_DIVERSIONS
+  - L_MONTHS
+  - L_ONTIME_DELAY_GROUPS
+  - L_QUARTERS
+  - L_STATE_ABR_AVIATION
+  - L_STATE_FIPS
+  - L_UNIQUE_CARRIERS
+  - L_WEEKDAYS
+  - L_WORLD_AREA_CODES
+  - L_YESNO_RESP
+  - Location
+  - MAINSAMPLE
+  - MAINSAMPLE_temp100
+  - MATCHES
+  - MATCH_STATS
+  - Mailings1_2
+  - NESRECA
+  - ON_TIME_ON_TIME_PERFORMANCE_2016_1
+  - OSEBA
+  - PARAMETERS
+  - PARTITIONS
+  - PASSWORD
+  - PERSON
+  - PERSONCREDITCARD
+  - PERSONPHONE
+  - PHONENUMBERTYPE
+  - PLAYERS
+  - PLUGINS
+  - PREDICTOR100001
+  - PREDICTOR100002
+  - PREDICTOR100003
+  - PREDICTOR100008
+  - PREDICTOR100009
+  - PREDICTOR100011
+  - PREDICTOR100012
+  - PREDICTOR100014
+  - PREDICTOR100020
+  - PREDICTOR100025
+  - PREDICTOR100026
+  - PREDICTOR100028
+  - PREDICTOR100042
+  - PREDICTOR100044
+  - PREDICTOR100046
+  - PREDICTOR100047
+  - PREDICTOR100058
+  - PREDICTOR100062
+  - PREDICTOR100067
+  - PREDICTOR100068
+  - PREDICTOR100074
+  - PREDICTOR100081
+  - PREDICTOR100082
+  - PREDICTOR100084
+  - PREDICTOR100085
+  - PREDICTOR100088
+  - PREDICTOR100090
+  - PREDICTOR100092
+  - PREDICTOR100093
+  - PREDICTOR100094
+  - PREDICTOR100095
+  - PREDICTOR100098
+  - PREDICTOR100099
+  - PREDICTOR100100
+  - PREDICTOR100101
+  - PREDICTOR100102
+  - PREDICTOR100104
+  - PREDICTOR100105
+  - PREDICTOR100106
+  - PREDICTOR100108
+  - PREDICTOR100109
+  - PREDICTOR100111
+  - PROCESSLIST
+  - PRODUCT
+  - PRODUCTCATEGORY
+  - PRODUCTCOSTHISTORY
+  - PRODUCTDESCRIPTION
+  - PRODUCTDOCUMENT
+  - PRODUCTINVENTORY
+  - PRODUCTLISTPRICEHISTORY
+  - PRODUCTMODEL
+  - PRODUCTMODELILLUSTRATION
+  - PRODUCTMODELPRODUCTDESCRIPTIONCULTURE
+  - PRODUCTPHOTO
+  - PRODUCTPRODUCTPHOTO
+  - PRODUCTREVIEW
+  - PRODUCTSUBCATEGORY
+  - PRODUCTVENDOR
+  - PROFILING
+  - PURCHASEORDERDETAIL
+  - PURCHASEORDERHEADER
+  - Password
+  - Person
+  - PersonCreditCard
+  - PersonPhone
+  - PhoneNumberType
+  - Product
+  - ProductCategory
+  - ProductCostHistory
+  - ProductDescription
+  - ProductDocument
+  - ProductInventory
+  - ProductListPriceHistory
+  - ProductModel
+  - ProductModelIllustration
+  - ProductModelProductDescriptionCulture
+  - ProductPhoto
+  - ProductProductPhoto
+  - ProductReview
+  - ProductSubcategory
+  - ProductVendor
+  - PurchaseOrderDetail
+  - PurchaseOrderHeader
+  - RA
+  - REFERENTIAL_CONSTRAINTS
+  - ROUTINES
+  - Reviews
+  - SALESORDERDETAIL
+  - SALESORDERHEADER
+  - SALESORDERHEADERSALESREASON
+  - SALESPERSON
+  - SALESPERSONQUOTAHISTORY
+  - SALESREASON
+  - SALESTAXRATE
+  - SALESTERRITORY
+  - SALESTERRITORYHISTORY
+  - SCHEMATA
+  - SCHEMA_PRIVILEGES
+  - SCRAPREASON
+  - SESSION_STATUS
+  - SESSION_VARIABLES
+  - SHIFT
+  - SHIPMETHOD
+  - SHOPPINGCARTITEM
+  - SPECIALOFFER
+  - SPECIALOFFERPRODUCT
+  - STATEPROVINCE
+  - STATISTICS
+  - STORE
+  - Sales
+  - SalesOrderDetail
+  - SalesOrderHeader
+  - SalesOrderHeaderSalesReason
+  - SalesPerson
+  - SalesPersonQuotaHistory
+  - SalesReason
+  - SalesTaxRate
+  - SalesTerritory
+  - SalesTerritoryHistory
+  - ScrapReason
+  - Shift
+  - ShipMethod
+  - ShoppingCartItem
+  - SpecialOffer
+  - SpecialOfferProduct
+  - StateProvince
+  - Store
+  - TABLES
+  - TABLESPACES
+  - TABLE_CONSTRAINTS
+  - TABLE_PRIVILEGES
+  - TABLE_STATISTICS
+  - TEAMS
+  - TRANSACTIONHISTORY
+  - TRANSACTIONHISTORYARCHIVE
+  - TRIGGERS
+  - TransactionHistory
+  - TransactionHistoryArchive
+  - UNITMEASURE
+  - UPRAVNA_ENOTA
+  - USER_PRIVILEGES
+  - USER_STATISTICS
+  - UnitMeasure
+  - Users
+  - VENDOR
+  - VIEWS
+  - Vendor
+  - WORKORDER
+  - WORKORDERROUTING
+  - WorkOrder
+  - WorkOrderRouting
+  - XTRADB_INTERNAL_HASH_TABLES
+  - XTRADB_READ_VIEW
+  - XTRADB_RSEG
+  - active_follower_real
+  - address
+  - addresstype
+  - algorithm
+  - algorithm_quality
+  - algorithm_setup
+  - all_plugins
+  - app_all
+  - app_events
+  - app_events_relevant
+  - app_labels
+  - applicable_roles
+  - atom
+  - awbuildversion
+  - badges
+  - base
+  - base_sampled
+  - bibliographical_reference
+  - billofmaterials
+  - bkp_Walmart_MS
+  - bkp_Walmart_j_pattern
+  - bkp_Walmart_j_predictor
+  - bkp_Walmart_j_table
+  - bkp__financial_MAINSAMPLE
+  - bkp__financial_journal_pattern
+  - bkp__financial_journal_predictor
+  - bkp__financial_journal_table
+  - bkp_financial_MAINSAMPLE
+  - bkp_financial_MS
+  - bkp_financial_j_pattern
+  - bkp_financial_j_predictor
+  - bkp_financial_j_table
+  - bkp_financial_journal_pattern
+  - bkp_financial_journal_predictor
+  - bkp_financial_journal_table
+  - bkp_mutagenesis_MAINSAMPLE
+  - bkp_mutagenesis_journal_pattern
+  - bkp_mutagenesis_journal_predictor
+  - bkp_mutagenesis_journal_table
+  - bond
+  - bool
+  - businessentity
+  - businessentityaddress
+  - businessentitycontact
+  - cars
+  - category
+  - character_sets
+  - charge
+  - cites
+  - class
+  - client
+  - client_statistics
+  - collation_character_set_applicability
+  - collations
+  - column_privileges
+  - columns
+  - comments
+  - comp_other
+  - comp_tee
+  - components
+  - connected
+  - contacttype
+  - content
+  - corporation
+  - countryregion
+  - countryregioncurrency
+  - course
+  - courses
+  - craftsmen
+  - creditcard
+  - culture
+  - currency
+  - currencyrate
+  - customer
+  - customers
+  - data_feature
+  - data_quality
+  - databaselog
+  - dataset
+  - department
+  - distinct_users_from_search_table_real_map
+  - dobito
+  - document
+  - downloads
+  - downvotes
+  - dss_customer
+  - dss_lineitem
+  - dss_nation
+  - dss_order
+  - dss_part
+  - dss_partsupp
+  - dss_region
+  - dss_supplier
+  - emailaddress
+  - employee
+  - employeedepartmenthistory
+  - employeepayhistory
+  - enabled_roles
+  - engines
+  - errorlog
+  - estimateFK_v4
+  - estimation_procedure
+  - estimation_procedure_type
+  - evaluation
+  - event_type
+  - events
+  - events_relevant
+  - fault
+  - fault_test
+  - fault_test_Neg
+  - features
+  - gasstations
+  - gender_age
+  - gender_age_test
+  - gender_age_train
+  - gmt_mission_phase
+  - grades
+  - illustration
+  - implementation
+  - implementation_component
+  - impotenten
+  - input
+  - invoices
+  - j_Carcinogenesis
+  - j_SAP
+  - j_Toxicology
+  - j_financial
+  - j_mutagenesis
+  - j_tpcc
+  - j_voc
+  - jobcandidate
+  - journal
+  - journal_financial_exhaustive
+  - journal_pattern2
+  - journal_pattern3
+  - journal_predictor
+  - journal_run
+  - journal_run2
+  - journal_run3
+  - journal_run4
+  - journal_table
+  - key
+  - label_categories
+  - location
+  - log
+  - log_copy
+  - log_feature
+  - mailings3
+  - mainsample
+  - mainsample_temp100
+  - math_function
+  - member
+  - molecule
+  - ms_Carcinogenesis
+  - ms_SAP
+  - ms_Toxicology
+  - ms_financial
+  - ms_mutagenesis
+  - ms_voc
+  - passengers
+  - password
+  - payment
+  - person
+  - personcreditcard
+  - personphone
+  - phone_brand_device_model2
+  - phonenumbertype
+  - postHistory
+  - postLinks
+  - posts
+  - predictor100001
+  - predictor100002
+  - predictor100003
+  - predictor100004
+  - predictor100006
+  - predictor100007
+  - predictor100008
+  - predictor100012
+  - predictor100013
+  - predictor100014
+  - predictor100015
+  - predictor100016
+  - predictor100017
+  - predictor100018
+  - predictor100019
+  - predictor100020
+  - predictor100023
+  - predictor100026
+  - predictor100027
+  - predictor100028
+  - predictor100029
+  - predictor100030
+  - predictor100031
+  - predictor100032
+  - predictor100033
+  - predictor100034
+  - predictor100035
+  - predictor100036
+  - predictor100037
+  - predictor100039
+  - predictor100040
+  - predictor100041
+  - predictor100042
+  - predictor100043
+  - predictor100044
+  - predictor100045
+  - predictor100046
+  - predictor100047
+  - predictor100048
+  - predictor100049
+  - probehnuto
+  - probehnuto_mimo_penezenku
+  - product
+  - productcategory
+  - productcosthistory
+  - productdescription
+  - productdocument
+  - productinventory
+  - productlistpricehistory
+  - productmodel
+  - productmodelillustration
+  - productmodelproductdescriptionculture
+  - productphoto
+  - productproductphoto
+  - productreview
+  - products
+  - productsubcategory
+  - productvendor
+  - prof
+  - propagated_account_002
+  - propagated_card_009
+  - propagated_client_007
+  - propagated_client_008
+  - propagated_disp_004
+  - propagated_district_003
+  - propagated_loan_001
+  - propagated_order_005
+  - propagated_trans_006
+  - provider
+  - purchaseorderdetail
+  - purchaseorderheader
+  - quality
+  - region
+  - registration
+  - resource_type
+  - run
+  - runfile
+  - salesorderdetail
+  - salesorderheader
+  - salesorderheadersalesreason
+  - salesperson
+  - salespersonquotahistory
+  - salesreason
+  - salestaxrate
+  - salesterritory
+  - salesterritoryhistory
+  - sample_submission
+  - sandbox
+  - schedule
+  - scrapreason
+  - seafarers
+  - setup_differences
+  - severity_type
+  - shift
+  - shipmethod
+  - shoppingcartitem
+  - soldiers
+  - specialoffer
+  - specialofferproduct
+  - statement
+  - stateprovince
+  - station
+  - status
+  - store
+  - stores
+  - student
+  - students
+  - succ
+  - tags
+  - target
+  - task
+  - task_inputs
+  - task_io_types
+  - task_type
+  - task_type_inout
+  - teachers
+  - time
+  - tm001_eod_relay
+  - tm002_battov_temp
+  - tm004_eoc_signaled
+  - tm007_switch
+  - tm009_switch
+  - tm011_eod_override
+  - tm013_switch
+  - tm015_eod_signaled
+  - tm017_switch
+  - tm018_switch
+  - tm021_eoc_disabled
+  - tm022_switch
+  - tm029_ovt_disabled
+  - tm031_switch
+  - tm038_switch
+  - tm039_eod_disabled
+  - tm040_switch
+  - tm042_switch
+  - tm043_switch
+  - tm054_supply_1a
+  - tm055_supply_1b
+  - tm057_supply_2c
+  - tm058_asr_or_switch_10
+  - tm070_supply_3c
+  - tm071_asr_or_switch_20
+  - tm211_bus_voltage
+  - tm220_supply_1c
+  - tm222_charging
+  - tm257_battery_voltage
+  - total
+  - trace
+  - train
+  - trains
+  - transactionhistory
+  - transactionhistoryarchive
+  - transactions
+  - transactions_1k
+  - trfl
+  - unitmeasure
+  - users
+  - utube_attributes
+  - utube_states
+  - vendor
+  - votes
+  - voyages
+  - weather
+  - webpage
+  - workorder
+  - workorderrouting
+  - yearmonth
+
+Schema: Bench2
+  - Categories
+  - CustomerCustomerDemo
+  - CustomerDemographics
+  - Customers
+  - EmployeeTerritories
+  - Employees
+  - Order Details
+  - Orders
+  - Products
+  - Region
+  - Shippers
+  - Suppliers
+  - Territories
+  - nesreca
+  - oseba
+  - upravna_enota
+
+Schema: Bench3
+  - actor
+  - address
+  - age
+  - bmi
+  - category
+  - city
+  - country
+  - customer
+  - diastolic
+  - film
+  - film_actor
+  - film_category
+  - inventory
+  - language
+  - numPreg
+  - payment
+  - pedigree
+  - pima
+  - plasma
+  - rental
+  - serum
+  - staff
+  - store
+  - tricepts
+
+Schema: Bench4
+  - Employees
+  - Products
+  - bill_of_materials
+  - cars
+  - comp_adaptor
+  - comp_boss
+  - comp_elbow
+  - comp_float
+  - comp_hfl
+  - comp_nut
+  - comp_other
+  - comp_sleeve
+  - comp_straight
+  - comp_tee
+  - comp_threaded
+  - components
+  - spec
+  - target
+  - trains
+  - tube
+  - tube_end_form
+  - type_component
+  - type_connection
+  - type_end_form
+
+Schema: Bench5
+  - AWBuildVersion
+  - Address
+  - AddressType
+  - BillOfMaterials
+  - BusinessEntity
+  - BusinessEntityAddress
+  - BusinessEntityContact
+  - ContactType
+  - CountryRegion
+  - CountryRegionCurrency
+  - CreditCard
+  - Culture
+  - Currency
+  - CurrencyRate
+  - Customer
+  - DatabaseLog
+  - Department
+  - Document
+  - EmailAddress
+  - Employee
+  - EmployeeDepartmentHistory
+  - EmployeePayHistory
+  - ErrorLog
+  - Illustration
+  - JobCandidate
+  - Location
+  - Password
+  - Person
+  - PersonCreditCard
+  - PersonPhone
+  - PhoneNumberType
+  - Product
+  - ProductCategory
+  - ProductCostHistory
+  - ProductDescription
+  - ProductDocument
+  - ProductInventory
+  - ProductListPriceHistory
+  - ProductModel
+  - ProductModelIllustration
+  - ProductModelProductDescriptionCulture
+  - ProductPhoto
+  - ProductProductPhoto
+  - ProductReview
+  - ProductSubcategory
+  - ProductVendor
+  - PurchaseOrderDetail
+  - PurchaseOrderHeader
+  - SalesOrderDetail
+  - SalesOrderHeader
+  - SalesOrderHeaderSalesReason
+  - SalesPerson
+  - SalesPersonQuotaHistory
+  - SalesReason
+  - SalesTaxRate
+  - SalesTerritory
+  - SalesTerritoryHistory
+  - ScrapReason
+  - Shift
+  - ShipMethod
+  - ShoppingCartItem
+  - SpecialOffer
+  - SpecialOfferProduct
+  - StateProvince
+  - Store
+  - TransactionHistory
+  - TransactionHistoryArchive
+  - UnitMeasure
+  - Vendor
+  - WorkOrder
+  - WorkOrderRouting
+  - account
+  - card
+  - client
+  - disp
+  - district
+  - edges
+  - feat
+  - loan
+  - order
+  - trans
+
+Schema: Bench6
+  - ATOMS
+  - BONDS
+  - DRUGS
+  - LEGALACTS
+  - LEGALACT_LINK
+  - LEGALACT_PEOPLE
+  - PEOPLE
+  - RINGS
+  - RING_ATOM
+  - RING_STRUCS
+  - SCRAPEFIX
+  - course
+  - key
+  - prof
+  - ra
+  - registration
+  - station
+  - student
+  - train
+  - weather
+
+Schema: Biodegradability
+  - atom
+  - bond
+  - gmember
+  - group
+  - molecule
+
+Schema: Bupa
+  - alkphos
+  - bupa
+  - bupa_name
+  - bupa_type
+  - drinks
+  - gammagt
+  - mcv
+  - sgot
+  - sgpt
+
+Schema: CDESchools
+  - frpm
+  - satscores
+  - schools
+
+Schema: CORA
+  - cites
+  - content
+  - paper
+
+Schema: Carcinogenesis
+  - atom
+  - canc
+  - sbond_1
+  - sbond_2
+  - sbond_3
+  - sbond_7
+
+Schema: ChEMBL
+  - activities
+  - assay2target
+  - assay_type
+  - assays
+  - compound_properties
+  - compound_records
+  - compound_synonyms
+  - compounds
+  - confidence_lookup
+  - docs
+  - relationship_type
+  - target_class
+  - target_dictionary
+  - target_protein
+  - target_type
+  - version
+
+Schema: Chess
+  - game
+  - opening
+
+Schema: Chinook
+  - Album
+  - Artist
+  - Customer
+  - Employee
+  - Genre
+  - Invoice
+  - InvoiceLine
+  - MediaType
+  - Playlist
+  - PlaylistTrack
+  - Track
+
+Schema: CiteSeer
+  - cites
+  - content
+  - paper
+
+Schema: ConsumerExpenditures
+  - EXPENDITURES
+  - HOUSEHOLDS
+  - HOUSEHOLD_MEMBERS
+
+Schema: Countries
+  - Data
+  - Metadata - Countries
+  - Metadata - Indicators
+  - target
+
+Schema: CraftBeer
+  - beers
+  - breweries
+
+Schema: Credit
+  - category
+  - charge
+  - corporation
+  - member
+  - payment
+  - provider
+  - region
+  - statement
+  - status
+
+Schema: DCG
+  - sentences
+  - terms
+
+Schema: Dallas
+  - incidents
+  - officers
+  - subjects
+
+Schema: Dunur
+  - aunt
+  - brother
+  - daughter
+  - dunur
+  - father
+  - husband
+  - husband2
+  - mother
+  - nephew
+  - niece
+  - person
+  - sister
+  - son
+  - target
+  - uncle
+  - wife
+  - wife2
+
+Schema: Elti
+  - brother
+  - daughter
+  - elti
+  - father
+  - husband
+  - mother
+  - person
+  - sister
+  - son
+  - target
+  - wife
+
+Schema: ErgastF1
+  - circuits
+  - constructorResults
+  - constructorStandings
+  - constructors
+  - driverStandings
+  - drivers
+  - lapTimes
+  - pitStops
+  - qualifying
+  - races
+  - results
+  - seasons
+  - status
+  - target
+
+Schema: FNHK
+  - pripady
+  - vykony
+  - zup
+
+Schema: Facebook
+  - edges
+  - feat
+
+Schema: Financial_ijs
+  - accounts
+  - cards
+  - clients
+  - disps
+  - districts
+  - loans
+  - orders
+  - tkeys
+  - trans
+
+Schema: Financial_std
+  - Loan_Acc
+  - Loan_Order
+  - Loan_Trans
+  - acc
+  - loan
+  - order
+  - trans
+
+Schema: FlexiBee
+  - issued-invoices
+  - received-invoices
+  - stock-items
+
+Schema: GOSales
+  - go_1k
+  - go_daily_sales
+  - go_methods
+  - go_products
+  - go_retailers
+
+Schema: Grants
+  - awards
+  - foa_info
+  - foa_info_awards
+  - institution
+  - institution_awards
+  - investigator
+  - investigator_awards
+  - organization
+  - program_element
+  - program_element_awards
+  - program_reference
+  - program_reference_awards
+
+Schema: Hepatitis_std
+  - Bio
+  - dispat
+  - indis
+  - inf
+  - rel11
+  - rel12
+  - rel13
+
+Schema: Hockey
+  - AwardsCoaches
+  - AwardsMisc
+  - AwardsPlayers
+  - Coaches
+  - CombinedShutouts
+  - Goalies
+  - GoaliesSC
+  - GoaliesShootout
+  - HOF
+  - Master
+  - Scoring
+  - ScoringSC
+  - ScoringShootout
+  - ScoringSup
+  - SeriesPost
+  - TeamSplits
+  - TeamVsTeam
+  - Teams
+  - TeamsHalf
+  - TeamsPost
+  - TeamsSC
+  - abbrev
+
+Schema: Hockey_Yeti
+  - original_player_season_draftdata
+  - original_player_season_hockey_drafted
+
+Schema: IMDB_1R
+  - HasRated
+  - Movie
+  - User
+
+Schema: KRK
+  - krk
+
+Schema: Mesh
+  - circuit
+  - circuit_hole
+  - cont_loaded
+  - element
+  - equal
+  - fixed
+  - free
+  - half_circuit
+  - half_circuit_hole
+  - llong
+  - long_for_hole
+  - mesh
+  - mesh_test
+  - mesh_test_Neg
+  - neighbour_xy
+  - neighbour_yz
+  - neighbour_zx
+  - nnumber
+  - noload
+  - notimportant
+  - one_side_fixed
+  - one_side_loaded
+  - opposite
+  - quarter_circuit
+  - short_for_hole
+  - sshort
+  - two_side_fixed
+  - two_side_loaded
+  - usual
+
+Schema: Mondial
+  - borders
+  - city
+  - continent
+  - country
+  - desert
+  - economy
+  - encompasses
+  - ethnicGroup
+  - geo_desert
+  - geo_estuary
+  - geo_island
+  - geo_lake
+  - geo_mountain
+  - geo_river
+  - geo_sea
+  - geo_source
+  - isMember
+  - island
+  - islandIn
+  - lake
+  - language
+  - located
+  - locatedOn
+  - mergesWith
+  - mountain
+  - mountainOnIsland
+  - organization
+  - politics
+  - population
+  - province
+  - religion
+  - river
+  - sea
+  - target
+
+Schema: Mondial_Tutorial
+  - Borders
+  - Country
+
+Schema: Mondial_geo
+  - City
+  - Continent
+  - Country
+  - Province
+  - borders
+  - capt_Country
+  - capt_Prov
+  - cityInProv
+  - countryOfProv
+  - encompasses
+
+Schema: Mooney_Family
+  - aunt
+  - aunt1
+  - aunt2
+  - aunt3
+  - aunt4
+  - aunt5
+  - brother
+  - brother1
+  - brother2
+  - brother3
+  - brother4
+  - brother5
+  - daughter
+  - daughter1
+  - daughter2
+  - daughter3
+  - daughter4
+  - daughter5
+  - father
+  - father1
+  - father2
+  - father3
+  - father4
+  - father5
+  - husband
+  - husband1
+  - husband2
+  - husband3
+  - husband4
+  - husband5
+  - mother
+  - mother1
+  - mother2
+  - mother3
+  - mother4
+  - mother5
+  - nephew
+  - nephew1
+  - nephew2
+  - nephew3
+  - nephew4
+  - nephew5
+  - niece
+  - niece1
+  - niece2
+  - niece3
+  - niece4
+  - niece5
+  - person
+  - sister
+  - sister1
+  - sister2
+  - sister3
+  - sister4
+  - sister5
+  - son
+  - son1
+  - son2
+  - son3
+  - son4
+  - son5
+  - uncle
+  - uncle1
+  - uncle2
+  - uncle3
+  - uncle4
+  - uncle5
+  - wife
+
+Schema: MuskLarge
+  - conformation
+  - molecule
+
+Schema: MuskSmall
+  - conformation
+  - molecule
+
+Schema: NBA
+  - Actions
+  - Game
+  - Player
+  - Team
+  - joined_drafted_all_players_original
+
+Schema: NCAA
+  - regular_season_compact_results
+  - regular_season_detailed_results
+  - seasons
+  - target
+  - teams
+  - tourney_compact_results
+  - tourney_detailed_results
+  - tourney_seeds
+  - tourney_slots
+
+Schema: OpenML_2016
+  - algorithm
+  - algorithm_quality
+  - algorithm_setup
+  - bibliographical_reference
+  - data_feature
+  - data_quality
+  - dataset
+  - downloads
+  - downvotes
+  - estimation_procedure
+  - estimation_procedure_type
+  - evaluation
+  - implementation
+  - implementation_component
+  - input
+  - math_function
+  - quality
+  - run
+  - runfile
+  - schedule
+  - setup_differences
+  - task
+  - task_inputs
+  - task_io_types
+  - task_type
+  - task_type_inout
+  - trace
+
+Schema: PTE
+  - active
+  - postestactive
+  - postestactive_Neg
+  - pte_active
+  - pte_alcohol
+  - pte_alkyl_halide
+  - pte_ames
+  - pte_amine
+  - pte_atm
+  - pte_atm_bond_count
+  - pte_atm_count
+  - pte_atm_max_charge
+  - pte_atm_min_charge
+  - pte_bond
+  - pte_bond_count
+  - pte_drug
+  - pte_ester
+  - pte_ether
+  - pte_five_ring
+  - pte_has_property
+  - pte_imine
+  - pte_ind
+  - pte_ketone
+  - pte_methoxy
+  - pte_methyl
+  - pte_mutagenic
+  - pte_nitro
+  - pte_non_ar_5c_ring
+  - pte_non_ar_6c_ring
+  - pte_non_ar_hetero_5_ring
+  - pte_non_ar_hetero_6_ring
+  - pte_number
+  - pte_phenol
+  - pte_six_ring
+  - pte_sulfide
+  - pte_sulfo
+  - pte_testactive
+  - pte_testactive_Neg
+
+Schema: Pima
+  - age
+  - bmi
+  - diastolic
+  - numPreg
+  - pedigree
+  - pima
+  - plasma
+  - serum
+  - tricepts
+
+Schema: PremierLeague
+  - Actions
+  - Matches
+  - Players
+  - Teams
+
+Schema: PubMed_Diabetes
+  - cites
+  - content
+  - paper
+
+Schema: Pyrimidine
+  - molecule
+  - position
+
+Schema: SAP
+  - Customers
+  - Demog
+  - Mailings1_2
+  - Sales
+  - mailings3
+
+Schema: SAT
+  - class
+  - fault
+  - fault_test
+  - gmt_mission_phase
+  - succ
+  - time
+  - tm001_eod_relay
+  - tm002_battov_temp
+  - tm004_eoc_signaled
+  - tm007_switch
+  - tm009_switch
+  - tm011_eod_override
+  - tm013_switch
+  - tm015_eod_signaled
+  - tm017_switch
+  - tm018_switch
+  - tm021_eoc_disabled
+  - tm022_switch
+  - tm029_ovt_disabled
+  - tm031_switch
+  - tm038_switch
+  - tm039_eod_disabled
+  - tm040_switch
+  - tm042_switch
+  - tm043_switch
+  - tm054_supply_1a
+  - tm055_supply_1b
+  - tm057_supply_2c
+  - tm058_asr_or_switch_10
+  - tm070_supply_3c
+  - tm071_asr_or_switch_20
+  - tm211_bus_voltage
+  - tm220_supply_1c
+  - tm222_charging
+  - tm257_battery_voltage
+  - trfl
+
+Schema: SFScores
+  - businesses
+  - inspections
+  - violations
+
+Schema: SalesDB
+  - Customers
+  - Employees
+  - Products
+  - Sales
+
+Schema: Same_gen
+  - parent
+  - person
+  - same_gen
+  - target
+
+Schema: Seznam
+  - client
+  - dobito
+  - probehnuto
+  - probehnuto_mimo_penezenku
+
+Schema: Shakespeare
+  - chapters
+  - characters
+  - paragraphs
+  - works
+
+Schema: Simpsons
+  - courses
+  - grades
+  - students
+  - teachers
+
+Schema: Student_loan
+  - bool
+  - disabled
+  - enlist
+  - enrolled
+  - filed_for_bankrupcy
+  - longest_absense_from_school
+  - male
+  - no_payment_due
+  - person
+  - unemployed
+
+Schema: TalkingData
+  - app_all
+  - app_events
+  - app_events_relevant
+  - app_labels
+  - events
+  - events_relevant
+  - gender_age
+  - gender_age_test
+  - gender_age_train
+  - label_categories
+  - phone_brand_device_model2
+  - sample_submission
+
+Schema: Telstra
+  - event_type
+  - log_feature
+  - resource_type
+  - severity_type
+  - target
+
+Schema: Toxicology
+  - atom
+  - bond
+  - connected
+  - molecule
+
+Schema: Triazine
+  - molecule
+  - position
+
+Schema: TubePricing
+  - bill_of_materials
+  - comp_adaptor
+  - comp_boss
+  - comp_elbow
+  - comp_float
+  - comp_hfl
+  - comp_nut
+  - comp_other
+  - comp_sleeve
+  - comp_straight
+  - comp_tee
+  - comp_threaded
+  - components
+  - spec
+  - target
+  - tube
+  - tube_end_form
+  - type_component
+  - type_connection
+  - type_end_form
+
+Schema: UTube
+  - utube_attributes
+  - utube_states
+
+Schema: UW_std
+  - advisedBy
+  - course
+  - person
+  - taughtBy
+
+Schema: VisualGenome
+  - ATT_CLASSES
+  - IMG_OBJ
+  - IMG_OBJ_ATT
+  - IMG_REL
+  - OBJ_CLASSES
+  - PRED_CLASSES
+
+Schema: Walmart
+  - key
+  - station
+  - train
+  - weather
+
+Schema: Walmart_2014
+  - features
+  - stores
+  - train
+
+Schema: WebKP
+  - cites
+  - content
+  - webpage
+
+Schema: Yelp
+  - Business
+  - Checkins
+  - Reviews
+  - Users
+
+Schema: YelpDataset3
+  - Business
+  - Business_Attributes
+  - Business_Attributes_AcceptsCreditCards
+  - Business_Attributes_Ambience
+  - Business_Attributes_DietaryRestrictions
+  - Business_Attributes_GoodFor
+  - Business_Attributes_HairTypesSpecializedIn
+  - Business_Attributes_Music
+  - Business_Attributes_Parking
+  - Business_Attributes_PaymentTypes
+  - Business_Categories
+  - Business_Hours
+  - Checkins
+  - Compliments
+  - Elite
+  - Friends
+  - Reviews
+  - Tips
+  - Users
+
+Schema: YelpDataset3_disc_clean
+  - Attributes
+  - Business
+  - Business_Attributes
+  - Business_Categories
+  - Business_Hours
+  - Categories
+  - Checkins
+  - Compliments
+  - Days
+  - Elite
+  - Reviews
+  - Tips
+  - Users
+  - Users_Compliments
+  - Years
+
+Schema: arnaud_DSSTOX
+  - DSSTOX
+
+Schema: arnaud_NWEcensusMid2014
+  - females
+  - males
+  - person
+
+Schema: arnaud_citeseer
+  - cites
+  - content
+  - paper
+
+Schema: ccs
+  - customers
+  - gasstations
+  - products
+  - transactions
+  - transactions_1k
+  - yearmonth
+
+Schema: classicmodels
+  - customers
+  - employees
+  - offices
+  - orderdetails
+  - orders
+  - payments
+  - productlines
+  - products
+
+Schema: cs
+  - ACCOUNTS
+  - ACCOUNT_TRANSACTIONS
+  - ACCOUNT_TRANSACT_TYPES
+  - ACCOUNT_TYPES
+  - ORGANIZATIONS
+  - PARTIES
+  - PRODUCTS
+  - target_churn
+
+Schema: ctu_20news
+  - 20news
+  - 2news
+
+Schema: ctu_KDD_Cup_2009
+  - data
+
+Schema: ctu_adult
+  - data
+
+Schema: ctu_auta
+  - auta
+
+Schema: ctu_crossSchema1
+  - account
+  - loan
+  - order
+  - trans
+
+Schema: ctu_crossSchema2
+  - card
+  - client
+  - disp
+  - district
+
+Schema: ctu_datatype_benchmark
+  - dimension
+  - target
+
+Schema: ctu_deals
+  - data
+
+Schema: ctu_ecoli
+  - data
+
+Schema: ctu_fairytale
+  - JuanManuel Tales
+  - authors_gutenberg
+  - authors_wikipedia
+  - baldwin
+  - feedbooks
+  - globalgrey
+  - google
+  - gutenberg
+  - gutenberg_cleared
+  - old_truncated
+  - tales_template
+
+Schema: ctu_feature_data
+  - financial_order
+  - financial_trans
+  - trains_cars
+
+Schema: ctu_feature_func
+  - result_list
+
+Schema: ctu_feature_temp
+  - calculated_feature
+
+Schema: ctu_financial
+  - account
+  - card
+  - client
+  - disp
+  - district
+  - loan
+  - order
+  - trans
+
+Schema: ctu_gaussian
+  - data
+
+Schema: ctu_metalearning
+  - journal_Accidents
+  - journal_AustralianFootball
+  - journal_Basketball_men
+  - journal_Biodegradability
+  - journal_CORA
+  - journal_Carcinogenesis
+  - journal_Chess
+  - journal_Facebook
+  - journal_Hepatitis_std
+  - journal_Mondial
+  - journal_PTE
+  - journal_PremierLeague
+  - journal_Student_loan
+  - journal_VisualGenome
+  - journal_Walmart
+  - journal_WebKP
+  - journal_ccs
+  - journal_financial
+  - journal_ftp
+  - journal_nations
+  - journal_sakila
+  - journal_world
+
+Schema: ctu_mushrooms
+  - data
+  - test
+
+Schema: ctu_outliers
+  - dataset1
+  - dataset2
+
+Schema: ctu_phishing
+  - email_v2
+  - hillary_ham
+  - hillary_ham2
+  - jose_phish
+  - jose_phish2
+  - personalInbox_ham
+  - personalInbox_ham2
+  - spamAssassin_ham
+  - spamAssassin_ham2
+
+Schema: ctu_titanic
+  - data
+
+Schema: ctu_vondreli
+
+Schema: employee
+  - departments
+  - dept_emp
+  - dept_manager
+  - employees
+  - salaries
+  - titles
+
+Schema: financial
+  - account
+  - card
+  - client
+  - disp
+  - district
+  - loan
+  - order
+  - trans
+
+Schema: ftp
+  - product
+  - session
+
+Schema: geneea
+  - bod_schuze
+  - bod_stav
+  - funkce
+  - hl_check
+  - hl_hlasovani
+  - hl_poslanec
+  - hl_vazby
+  - hl_zposlanec
+  - omluvy
+  - organy
+  - osoby
+  - pkgps
+  - poslanec
+  - schuze
+  - schuze_stav
+  - typ_funkce
+  - typ_organu
+  - zarazeni
+  - zmatecne
+
+Schema: genes
+  - Classification
+  - Genes
+  - Interactions
+
+Schema: imdb_MovieLens
+  - actors
+  - directors
+  - movies
+  - movies2actors
+  - movies2directors
+  - u2base
+  - users
+
+Schema: imdb_full
+  - actors
+  - business
+  - countries
+  - directors
+  - distributors
+  - editors
+  - genres
+  - language
+  - movies
+  - movies2actors
+  - movies2directors
+  - movies2editors
+  - movies2producers
+  - movies2writers
+  - prodcompanies
+  - producers
+  - ratings
+  - runningtimes
+  - writers
+
+Schema: imdb_ijs
+  - actors
+  - directors
+  - directors_genres
+  - movies
+  - movies_directors
+  - movies_genres
+  - roles
+
+Schema: imdb_small
+  - actors
+  - directors
+  - directors_genres
+  - movies
+  - movies_directors
+  - movies_genres
+  - roles
+
+Schema: information_schema
+
+Schema: lahman_2014
+  - allstarfull
+  - appearances
+  - awardsmanagers
+  - awardsplayers
+  - awardssharemanagers
+  - awardsshareplayers
+  - batting
+  - battingpost
+  - els_teamnames
+  - fielding
+  - fieldingof
+  - fieldingpost
+  - halloffame
+  - managers
+  - managershalf
+  - pitching
+  - pitchingpost
+  - players
+  - salaries
+  - schools
+  - schoolsplayers
+  - seriespost
+  - teams
+  - teamsfranchises
+  - teamshalf
+
+Schema: legalActs
+  - legalact_link
+  - legalact_people
+  - legalacts
+  - people
+  - scrapefix
+
+Schema: medical
+  - Examination
+  - Laboratory
+  - Patient
+
+Schema: meta
+  - algorithm
+  - author
+  - database
+  - dataset
+  - information
+  - information_bkp
+  - measure
+  - performance
+  - qc
+  - reference
+
+Schema: mutagenesis
+  - atom
+  - bond
+  - molecule
+
+Schema: mutagenesis_188
+  - atoms
+  - bonds
+  - drugs
+  - ring_atom
+  - ring_strucs
+  - rings
+
+Schema: mutagenesis_42
+  - atoms
+  - bonds
+  - drugs
+  - ring_atom
+  - ring_strucs
+  - rings
+
+Schema: mysql
+  - audit_log_rules
+  - audit_log_rules_expanded
+  - audit_log_supported_ops
+  - cloudsql_db_advisor_jobs
+  - cloudsql_db_advisor_recommendation_analysis
+  - cloudsql_db_advisor_recommended_indexes
+  - cloudsql_db_advisor_report_index_mapping
+  - cloudsql_db_advisor_workload_report
+  - cloudsql_db_advisor_workload_statements
+  - cloudsql_replica_index
+  - columns_priv
+  - component
+  - db
+  - default_roles
+  - engine_cost
+  - func
+  - general_log
+  - global_grants
+  - gtid_executed
+  - heartbeat
+  - help_category
+  - help_keyword
+  - help_relation
+  - help_topic
+  - innodb_index_stats
+  - innodb_table_stats
+  - password_history
+  - patch_action_execution_state
+  - plugin
+  - procs_priv
+  - proxies_priv
+  - replication_asynchronous_connection_failover
+  - replication_asynchronous_connection_failover_managed
+  - replication_group_configuration_version
+  - replication_group_member_actions
+  - role_edges
+  - server_cost
+  - servers
+  - skip_replication_error_history
+  - slave_master_info
+  - slave_relay_log_info
+  - slave_worker_info
+  - slow_log
+  - tables_priv
+  - time_zone
+  - time_zone_leap_second
+  - time_zone_name
+  - time_zone_transition
+  - time_zone_transition_type
+  - user
+
+Schema: nations
+  - country
+  - relation
+  - stat
+
+Schema: nhl_draft
+  - PlayerInfo
+  - SeasonStatus
+
+Schema: northwind
+  - Categories
+  - CustomerCustomerDemo
+  - CustomerDemographics
+  - Customers
+  - EmployeeTerritories
+  - Employees
+  - Order Details
+  - Orders
+  - Products
+  - Region
+  - Shippers
+  - Suppliers
+  - Territories
+
+Schema: performance_schema
+  - accounts
+  - binary_log_transaction_compression_stats
+  - cond_instances
+  - data_lock_waits
+  - data_locks
+  - error_log
+  - events_errors_summary_by_account_by_error
+  - events_errors_summary_by_host_by_error
+  - events_errors_summary_by_thread_by_error
+  - events_errors_summary_by_user_by_error
+  - events_errors_summary_global_by_error
+  - events_stages_current
+  - events_stages_history
+  - events_stages_history_long
+  - events_stages_summary_by_account_by_event_name
+  - events_stages_summary_by_host_by_event_name
+  - events_stages_summary_by_thread_by_event_name
+  - events_stages_summary_by_user_by_event_name
+  - events_stages_summary_global_by_event_name
+  - events_statements_current
+  - events_statements_histogram_by_digest
+  - events_statements_histogram_global
+  - events_statements_history
+  - events_statements_history_long
+  - events_statements_summary_by_account_by_event_name
+  - events_statements_summary_by_digest
+  - events_statements_summary_by_host_by_event_name
+  - events_statements_summary_by_program
+  - events_statements_summary_by_thread_by_event_name
+  - events_statements_summary_by_user_by_event_name
+  - events_statements_summary_global_by_event_name
+  - events_transactions_current
+  - events_transactions_history
+  - events_transactions_history_long
+  - events_transactions_summary_by_account_by_event_name
+  - events_transactions_summary_by_host_by_event_name
+  - events_transactions_summary_by_thread_by_event_name
+  - events_transactions_summary_by_user_by_event_name
+  - events_transactions_summary_global_by_event_name
+  - events_waits_current
+  - events_waits_history
+  - events_waits_history_long
+  - events_waits_summary_by_account_by_event_name
+  - events_waits_summary_by_host_by_event_name
+  - events_waits_summary_by_instance
+  - events_waits_summary_by_thread_by_event_name
+  - events_waits_summary_by_user_by_event_name
+  - events_waits_summary_global_by_event_name
+  - file_instances
+  - file_summary_by_event_name
+  - file_summary_by_instance
+  - global_status
+  - global_variables
+  - host_cache
+  - hosts
+  - innodb_redo_log_files
+  - keyring_component_status
+  - keyring_keys
+  - log_status
+  - memory_summary_by_account_by_event_name
+  - memory_summary_by_host_by_event_name
+  - memory_summary_by_thread_by_event_name
+  - memory_summary_by_user_by_event_name
+  - memory_summary_global_by_event_name
+  - metadata_locks
+  - mutex_instances
+  - objects_summary_global_by_type
+  - performance_timers
+  - persisted_variables
+  - prepared_statements_instances
+  - processlist
+  - replication_applier_configuration
+  - replication_applier_filters
+  - replication_applier_global_filters
+  - replication_applier_status
+  - replication_applier_status_by_coordinator
+  - replication_applier_status_by_worker
+  - replication_asynchronous_connection_failover
+  - replication_asynchronous_connection_failover_managed
+  - replication_connection_configuration
+  - replication_connection_status
+  - replication_group_member_stats
+  - replication_group_members
+  - rwlock_instances
+  - session_account_connect_attrs
+  - session_connect_attrs
+  - session_status
+  - session_variables
+  - setup_actors
+  - setup_consumers
+  - setup_instruments
+  - setup_objects
+  - setup_threads
+  - socket_instances
+  - socket_summary_by_event_name
+  - socket_summary_by_instance
+  - status_by_account
+  - status_by_host
+  - status_by_thread
+  - status_by_user
+  - table_handles
+  - table_io_waits_summary_by_index_usage
+  - table_io_waits_summary_by_table
+  - table_lock_waits_summary_by_table
+  - threads
+  - tls_channel_status
+  - user_defined_functions
+  - user_variables_by_thread
+  - users
+  - variables_by_thread
+  - variables_info
+
+Schema: pubs
+  - authors
+  - discounts
+  - employee
+  - jobs
+  - pub_info
+  - publishers
+  - roysched
+  - sales
+  - stores
+  - titleauthor
+  - titles
+
+Schema: restbase
+  - generalinfo
+  - geographic
+  - location
+
+Schema: sakila
+  - actor
+  - address
+  - category
+  - city
+  - country
+  - customer
+  - film
+  - film_actor
+  - film_category
+  - film_text
+  - inventory
+  - language
+  - payment
+  - rental
+  - staff
+  - store
+
+Schema: stats
+  - badges
+  - comments
+  - postHistory
+  - postLinks
+  - posts
+  - tags
+  - users
+  - votes
+
+Schema: stats_CEB
+  - badges
+  - comments
+  - postHistory
+  - postLinks
+  - posts
+  - tags
+  - users
+  - votes
+
+Schema: sys
+  - sys_config
+
+Schema: tmp
+
+Schema: tpcc
+  - C_Customer
+  - C_District
+  - C_History
+  - C_Item
+  - C_New_Order
+  - C_Order
+  - C_Order_Line
+  - C_Stock
+  - C_Warehouse
+
+Schema: tpcd
+  - dss_customer
+  - dss_lineitem
+  - dss_nation
+  - dss_order
+  - dss_part
+  - dss_partsupp
+  - dss_region
+  - dss_supplier
+
+Schema: tpcds
+  - call_center
+  - catalog_page
+  - catalog_returns
+  - catalog_sales
+  - customer
+  - customer_address
+  - customer_demographics
+  - date_dim
+  - household_demographics
+  - income_band
+  - inventory
+  - item
+  - promotion
+  - reason
+  - ship_mode
+  - store
+  - store_returns
+  - store_sales
+  - time_dim
+  - warehouse
+  - web_page
+  - web_returns
+  - web_sales
+  - web_site
+
+Schema: tpce
+  - E_ACCOUNT_PERMISSION
+  - E_ADDRESS
+  - E_BROKER
+  - E_CASH_TRANSACTION
+  - E_CHARGE
+  - E_COMMISSION_RATE
+  - E_COMPANY
+  - E_COMPANY_COMPETITOR
+  - E_CUSTOMER
+  - E_CUSTOMER_ACCOUNT
+  - E_CUSTOMER_TAXRATE
+  - E_DAILY_MARKET
+  - E_EXCHANGE
+  - E_FINANCIAL
+  - E_HOLDING
+  - E_HOLDING_HISTORY
+  - E_HOLDING_SUMMARY
+  - E_INDUSTRY
+  - E_LAST_TRADE
+  - E_NEWS_ITEM
+  - E_NEWS_XREF
+  - E_SECTOR
+  - E_SECURITY
+  - E_SETTLEMENT
+  - E_STATUS_TYPE
+  - E_TAXRATE
+  - E_TRADE
+  - E_TRADE_HISTORY
+  - E_TRADE_REQUEST
+  - E_TRADE_TYPE
+  - E_WATCH_ITEM
+  - E_WATCH_LIST
+  - E_ZIP_CODE
+
+Schema: tpch
+  - customer
+  - lineitem
+  - nation
+  - orders
+  - part
+  - partsupp
+  - region
+  - supplier
+
+Schema: trains
+  - cars
+  - trains
+
+Schema: twitterfromsearch4_20101001
+  - active_follower_real
+
+Schema: university
+  - RA
+  - course
+  - prof
+  - registration
+  - student
+
+Schema: world
+  - City
+  - Country
+  - CountryLanguage
