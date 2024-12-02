@@ -1,0 +1,102 @@
+import pandas as pd
+from tabulate import tabulate
+import re
+
+
+class FetchData:
+    def __init__(self, connection):
+        """
+        Initializes the FetchData class with an existing database connection.
+        :param connection: Database connection object.
+        """
+        self.connection = connection
+
+    def fetch_and_process_movie_data(self):
+        if self.connection is None:
+            print("Error: Database connection not established.")
+            return
+
+        try:
+            # Fetch raw data
+            with self.connection.connect() as conn:
+                movies = pd.read_sql("SELECT movieid, title, year FROM movies", conn)
+                genres = pd.read_sql("SELECT movieid, genre FROM genres", conn)
+                business = pd.read_sql("SELECT movieid, businesstext FROM business", conn)
+
+            # Merge dataframes to simulate INNER JOIN on movieid
+            merged = movies.merge(genres, on="movieid").merge(business, on="movieid")
+
+            # Filter rows where business.businesstext contains 'GR' and explicitly create a copy
+            filtered = merged[merged["businesstext"].str.contains("GR", na=False)].copy()
+
+            # Function to extract detailed business information
+            def extract_detailed_business_info(text):
+                info = {
+                    "Currency": None,
+                    "Budget": None,
+                    "Gross Revenue": None,
+                    "Additional Data": None,
+                    "Copyright": None
+                }
+                # Extract budget (BT), gross revenue (GR), additional data (AD), and copyright (CP)
+                budget_match = re.search(r'BT:\s*([A-Z]{3})\s*([\d,]+)', text)
+                gross_revenue_match = re.search(r'GR:\s*([A-Z]{3})\s*([\d,]+)', text)
+                additional_data_match = re.findall(r'AD:\s*([^\n]+)', text)
+                copyright_match = re.search(r'CP:\s*(.+)', text)
+                # Set values if matches are found
+                if budget_match:
+                    info['Currency'] = budget_match.group(1)
+                    info['Budget'] = int(budget_match.group(2).replace(',', ''))
+                if gross_revenue_match:
+                    info['Gross Revenue'] = int(gross_revenue_match.group(2).replace(',', ''))
+                if additional_data_match:
+                    info['Additional Data'] = " | ".join(additional_data_match)
+                if copyright_match:
+                    info['Copyright'] = copyright_match.group(1)
+                return pd.Series(info)
+
+            # Apply the detailed business information extraction
+            detailed_info = filtered["businesstext"].apply(extract_detailed_business_info)
+            filtered = pd.concat([filtered, detailed_info], axis=1)
+
+            # Remove rows with blank gross revenue values
+            filtered = filtered.dropna(subset=["Gross Revenue"]).copy()
+
+            # Include rows where 'USD' is in either 'Currency' or 'Additional Data'
+            filtered = filtered[
+                (filtered["Currency"] == "USD") |
+                (filtered["Additional Data"].str.contains("USD", na=False))
+            ].copy()
+
+            # Define a function for concatenating genres
+            def concatenate_genres(genre_series):
+                return ", ".join(genre_series)
+
+            # Group by movieid, title, and year, using a named function
+            grouped = filtered.groupby(["movieid", "title", "year"]).agg(
+                genres=("genre", concatenate_genres),
+                Currency=("Currency", "first"),
+                Budget=("Budget", "first"),
+                Gross_Revenue=("Gross Revenue", "first"),
+                Additional_Data=("Additional Data", "first"),
+                Copyright=("Copyright", "first")
+            ).reset_index()
+
+            # Format "Budget" and "Gross Revenue" to avoid exponential notation
+            grouped["Budget"] = grouped["Budget"].apply(lambda x: f"{x:,}" if pd.notna(x) else None)
+            grouped["Gross_Revenue"] = grouped["Gross_Revenue"].apply(lambda x: f"{x:,}" if pd.notna(x) else None)
+
+            # Sort by year (oldest to newest)
+            grouped = grouped.sort_values(by="year", ascending=True)
+
+            # Display the DataFrame
+            print("\nProcessed Movie Data (Sorted by Year, Formatted Budget and Revenue):")
+            print(tabulate(grouped, headers="keys", tablefmt="psql"))
+
+            # Save results to a CSV file
+            output_file = "processed_movie_data.csv"
+            grouped.to_csv(output_file, index=False)
+            print(f"Results saved to {output_file}")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")

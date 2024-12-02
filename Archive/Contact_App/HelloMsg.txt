@@ -1,3 +1,0 @@
-------------------------------------------------------------
-Simple app to demonstrate to the user how data can be read
-in from the user and printed to the builtin console.

@@ -6,6 +6,7 @@
  - Group genre by year, visualise
  - Determine what additional information could be presented e.g. GR: Other countries
  - Look at actors v. revenue
+ - incorporate TKinter and other stuff we used during the module
 
 create resultset - write query for actors etc... add dropdown to allow user pick field. When user picks actor -> list of movies appears which star that actor. 
 "search actor bt name" - use %like% where genre, use user input letter to match e.g. search 'ste' to return stephen, stefano, stewart.... Use code and GUI that Karol provided on Moodle.
@@ -15,12 +16,12 @@ You could do predictive analysis for multiple actors, and rank them.
 Try creating a heatmap using multiple variables if you are trying to find a correlation.
 
 
-merge 
+merge movies.title, movie.year, genres.genre, business.businesstext on movieid
 
 csv files modified:
 - corrected characters
 - removed any films with non-USD currency
-- is it possible to adjust values for inflation?
+- is it possible to adjust values for inflation? Yes, done.
 
 
 Get data from database, merge based on data taken from database. The current data was exported using a mySQL query. Try to get all data merged with one Python function and then generate graphs and tables based on that.

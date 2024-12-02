@@ -12,6 +12,7 @@ class FetchData:
         self.connection = connection
         self.inflation_data = self.get_inflation_data()  # Initialize inflation data
 
+    # CPI data from https://www.usinflationcalculator.com/inflation/consumer-price-index-and-annual-percent-changes-from-1913-to-2008/
     @staticmethod
     def get_inflation_data():
         """
@@ -25,7 +26,7 @@ class FetchData:
                      1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992,
                      1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
                      2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
-            '% Change': [None, 1, 2, 12.6, 18.1, 20.4, 14.5, 2.6, -10.8, -2.3, 2.4, 0, 3.5, -1.1, -2.3, -1.2, 0.6,
+            '% Change': [0, 1, 2, 12.6, 18.1, 20.4, 14.5, 2.6, -10.8, -2.3, 2.4, 0, 3.5, -1.1, -2.3, -1.2, 0.6,
                          -6.4, -9.3, -10.3, 0.8, 1.5, 3, 1.4, 2.9, -2.8, 0, 0.7, 9.9, 9, 3, 2.3, 2.2, 18.1, 8.8, 3,
                          -2.1, 5.9, 6, 0.8, 0.7, -0.7, 0.4, 3, 2.9, 1.8, 1.7, 1.4, 0.7, 1.3, 1.6, 1, 1.9, 3.5, 3,
                          4.7, 6.2, 5.6, 3.3, 3.4, 8.7, 12.3, 6.9, 4.9, 6.7, 9, 13.3, 12.5, 8.9, 3.8, 3.8, 3.9, 3.8,
@@ -33,6 +34,24 @@ class FetchData:
                          3.3, 3.4, 2.5, 4.1, 0.1, 2.7, 1.5, 3, 1.7, 1.5, 0.8, 0.7, 2.1, 2.1, 1.9, 2.3, 1.4, 7, 6.5,
                          3.4]
         }).set_index('Year')
+
+
+    def calculate_percentage_difference(self, row):
+        """
+        Calculate the percentage difference using the formula:
+        % = (Adjusted Gross Revenue / Adjusted Budget) * 100
+        :param row: A pandas DataFrame row.
+        :return: The percentage difference as a float or None if invalid data.
+        """
+        try:
+            if pd.notna(row['Adjusted_Gross_Revenue']) and pd.notna(row['Adjusted_Budget']) and row['Adjusted_Budget'] != 0:
+                return (row['Adjusted_Gross_Revenue'] / row['Adjusted_Budget']) * 100
+            else:
+                return None
+        except Exception as e:
+            print(f"Error calculating percentage for row: {e}")
+            return None
+
 
     def calculate_adjusted_value(self, year, value):
         """
@@ -107,16 +126,16 @@ class FetchData:
                 (filtered["Additional Data"].str.contains("USD", na=False))
                 ]
 
-            # Adjust budget for inflation
-            def adjust_budget(row):
-                return self.calculate_adjusted_value(row['year'], row['Budget'])
+            # Adjust budget and gross revenue for inflation
+            filtered['Adjusted_Budget'] = filtered.apply(
+                lambda row: self.calculate_adjusted_value(row['year'], row['Budget']), axis=1
+            )
+            filtered['Adjusted_Gross_Revenue'] = filtered.apply(
+                lambda row: self.calculate_adjusted_value(row['year'], row['Gross Revenue']), axis=1
+            )
 
-            # Adjust gross revenue for inflation
-            def adjust_gross_revenue(row):
-                return self.calculate_adjusted_value(row['year'], row['Gross Revenue'])
-
-            filtered['Adjusted_Budget'] = filtered.apply(adjust_budget, axis=1)
-            filtered['Adjusted_Gross_Revenue'] = filtered.apply(adjust_gross_revenue, axis=1)
+            # Calculate percentage difference
+            filtered['Percentage_Difference'] = filtered.apply(self.calculate_percentage_difference, axis=1)
 
             # Define a function for concatenating genres
             def concatenate_genres(genre_series):
@@ -130,14 +149,16 @@ class FetchData:
                 Adjusted_Budget=("Adjusted_Budget", "first"),
                 Gross_Revenue=("Gross Revenue", "first"),
                 Adjusted_Gross_Revenue=("Adjusted_Gross_Revenue", "first"),
+                Percentage_Difference=("Percentage_Difference", "first"),
                 Additional_Data=("Additional Data", "first")
             ).reset_index()
 
-            # Format "Budget" and "Gross Revenue" to avoid exponential notation
+            # Format "Budget", "Gross Revenue", and percentage difference to avoid exponential notation
             def format_values(x):
                 return f"{x:,.2f}" if pd.notna(x) else None
 
-            for col in ["Budget", "Gross_Revenue", "Adjusted_Budget", "Adjusted_Gross_Revenue"]:
+            for col in ["Budget", "Gross_Revenue", "Adjusted_Budget", "Adjusted_Gross_Revenue",
+                        "Percentage_Difference"]:
                 grouped[col] = grouped[col].apply(format_values)
 
             # Sort by year (oldest to newest)
@@ -150,4 +171,7 @@ class FetchData:
 
         except Exception as e:
             print(f"An error occurred: {e}")
+
+
+
 
