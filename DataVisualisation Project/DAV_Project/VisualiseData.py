@@ -1,9 +1,11 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 
 class VisualiseData:
     def __init__(self, connection):
+        self.columns = None
         self.connection = connection
 
 
@@ -28,6 +30,7 @@ class VisualiseData:
 
         # Filter by year range 1921 to 2000
         return filtered_data[(filtered_data['Year'] >= 1921) & (filtered_data['Year'] <= 2000)]
+
 
     # Plot % Profit / Loss by year
     def plot_percentage_profit_loss_by_year(self, data):
@@ -202,5 +205,74 @@ class VisualiseData:
 
         except Exception as e:
             print(f"An error occurred while plotting genres: {e}")
+
+    import matplotlib.pyplot as plt
+
+    def plot_genre_revenue_by_year(grouped_data):
+        """
+        Generate a plot for each genre, showing x = Year and y = Adjusted_Gross_Revenue.
+
+        :param grouped_data: DataFrame containing 'Year', 'Adjusted_Gross_Revenue', and 'genres' columns.
+        """
+        try:
+
+            # Check if the required columns exist
+            required_columns = {'Year', 'Adjusted_Gross_Revenue', 'genres'}
+            if not required_columns.issubset(grouped_data.columns):
+                raise ValueError(f"Error: The required columns {required_columns} are not in the DataFrame.")
+
+            # Drop rows with missing or invalid values
+            filtered_data = grouped_data.dropna(subset=['Year', 'Adjusted_Gross_Revenue', 'genres'])
+
+
+            # Convert 'Year' to integer
+            filtered_data['Year'] = filtered_data['Year'].astype(int)
+
+            # Filter by the year cutoff
+            filtered_data = filtered_data[filtered_data['Year'] <= 2000]
+
+            # Split genres into individual entries
+            filtered_data['genres_split'] = filtered_data['genres'].str.split(',')
+            exploded_data = filtered_data.explode('genres_split')
+
+            # Strip whitespace from genre names
+            exploded_data['genres_split'] = exploded_data['genres_split'].str.strip()
+
+            # Get unique genres
+            unique_genres = exploded_data['genres_split'].dropna().unique()
+
+            # Generate a plot for each genre
+            for genre in unique_genres:
+                genre_data = exploded_data[exploded_data['genres_split'] == genre]
+
+                # Group by Year and sum Adjusted_Gross_Revenue for each year
+                genre_revenue = genre_data.groupby('Year')['Adjusted_Gross_Revenue'].sum()
+
+
+                # Plot the data
+                plt.figure(figsize=(10, 6))
+                plt.plot(genre_revenue.index, genre_revenue.values, marker='o', label=f'{genre} Revenue')
+                plt.xlabel('Year')
+                plt.ylabel('Adjusted Gross Revenue')
+                plt.title(f'Adjusted Gross Revenue by Year for {genre}')
+
+                years = sorted(filtered_data['Year'].unique())
+                ticks = np.arange(min(years), max(years) + 1, 3) # 3 year increment
+
+                # Remove exponential formatting from y-axis
+                ax = plt.gca()
+                ax.yaxis.set_major_formatter(ScalarFormatter(useOffset=False))
+                plt.ticklabel_format(style='plain', axis='y')  # Force plain formatting
+
+                plt.xticks(ticks=ticks, rotation=45)
+                plt.grid(True, linestyle='--', linewidth=0.5)
+                plt.legend()
+                plt.tight_layout()  # Adjust layout to avoid clipping
+                plt.show()
+
+        except Exception as e:
+            print(f"An error occurred while plotting genres: {e}")
+
+
 
 

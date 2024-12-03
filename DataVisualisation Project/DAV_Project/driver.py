@@ -1,9 +1,12 @@
+from AppGUI import AppGUI
 from FetchData import FetchData
 from ActorSearch import ActorSearch
 from GenreSearch import GenreSearch
 from VisualiseData import VisualiseData
 from DataAnalysis import DataAnalysis
 from DatabaseAccess import DBConnection_Alchemy
+import tkinter as tk
+
 
 def main():
     host = "db.relational-data.org"
@@ -18,32 +21,21 @@ def main():
     # Pass the tuple to the DBConnection class
     relationalDB = DBConnection_Alchemy(db_info)
     fetchData = FetchData(relationalDB.mydb)
-    visualiseData = VisualiseData(relationalDB.mydb)
-    analyseData = DataAnalysis(relationalDB.mydb)
 
-    # fetchData
-    #fetchData.fetch_and_process_movie_data()
-    # fetchData.count_genre_by_year('comedy')
-
-    business_and_movie_data = fetchData.fetch_and_process_movie_data()
-
-    # visualise data
-    """
-    business_and_movie_data = fetchData.fetch_and_process_movie_data()
-    visualiseData.plot_percentage_profit_loss_by_year(business_and_movie_data)
-    visualiseData.plot_percentage_profit_loss_by_year_zoomed(business_and_movie_data)
-    visualiseData.plot_percentage_profit_loss_by_year_100(business_and_movie_data)
-    """
-    #visualiseData.plot_all_genres_by_year(business_and_movie_data)
-
-    # Run the Actor Movie Search App
-    #actor_search_app = ActorSearch(relationalDB.mydb)
-    #actor_search_app.run()
-
-    # Run GenreSearch App
+    # Fetch the processed data
     grouped = fetchData.fetch_and_process_movie_data()
+
+    # Initialize apps
+    actor_search_app = ActorSearch(relationalDB.mydb)
     genre_search_app = GenreSearch(grouped)
-    genre_search_app.run()
+
+    # Create the main Tk instance
+    root = tk.Tk()
+    AppGUI(master=root, actor_search_app=actor_search_app, genre_search_app=genre_search_app)
+
+    root.mainloop()
+
+    #VisualiseData.plot_genre_revenue_by_year(grouped)
 
     # Close the connection
     relationalDB.disposeConnection()

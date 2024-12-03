@@ -1,59 +1,93 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
+import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 
 
 class GenreSearch:
     def __init__(self, data):
         """
         Initialize the GenreSearch class with a DataFrame.
-        :param data: Preprocessed DataFrame containing 'Year' and 'genres'.
+        :param data: Preprocessed DataFrame containing 'Year', 'genres', 'title', and 'Adjusted_Gross_Revenue'.
         """
-        self.data = data
+        self.data = data.copy()  # Avoid mutating the original DataFrame
 
-    def count_genre_by_year(self, genre_name):
+    def get_movies_by_genre(self, genre_name):
         """
-        Count the occurrences of a specific genre for each year.
-        :param genre_name: Genre name to count.
-        :return: DataFrame with years and counts.
+        Retrieve movies and years for a specific genre, filtered by the cutoff year.
+        :param genre_name: Genre name to search for.
+        :return: DataFrame with Year, Title, and Adjusted_Gross_Revenue.
         """
-        # Split the 'genres' column into individual genres
-        self.data['genres_split'] = self.data['genres'].str.split(',')
+        exploded_data = self.data.copy()
+        exploded_data['genres_split'] = exploded_data['genres'].str.split(',')
 
         # Explode the DataFrame so that each genre has its own row
-        exploded_data = self.data.explode('genres_split')
+        exploded_data = exploded_data.explode('genres_split')
 
-        # Strip whitespace from genre names to ensure accuracy
+        # Strip whitespace from genre names
         exploded_data['genres_split'] = exploded_data['genres_split'].str.strip()
 
-        # Filter for the specific genre and count occurrences per year
+        # Ensure 'Year' is numeric
+        exploded_data['Year'] = pd.to_numeric(exploded_data['Year'], errors='coerce')
+
+        # Drop rows with non-numeric Year
+        exploded_data = exploded_data.dropna(subset=['Year'])
+
+        # Convert 'Year' to integer
+        exploded_data['Year'] = exploded_data['Year'].astype(int)
+
+        # Filter for the specific genre and cutoff year
+        genre_movies = exploded_data[
+            (exploded_data['genres_split'] == genre_name) & (exploded_data['Year'] <= 2000)
+        ][['Year', 'title', 'Adjusted_Gross_Revenue']]
+        return genre_movies
+
+    def get_genre_counts(self, genre_name):
+        """
+        Count the number of movies for a specific genre by year, filtered by the cutoff year.
+        :param genre_name: Genre name to count.
+        :return: Series with years as index and movie counts as values.
+        """
+        exploded_data = self.data.copy()
+        exploded_data['genres_split'] = exploded_data['genres'].str.split(',')
+        exploded_data = exploded_data.explode('genres_split')
+        exploded_data['genres_split'] = exploded_data['genres_split'].str.strip()
+
+        exploded_data['Year'] = pd.to_numeric(exploded_data['Year'], errors='coerce')
+        exploded_data = exploded_data.dropna(subset=['Year'])
+        exploded_data['Year'] = exploded_data['Year'].astype(int)
+
         genre_counts = (
-            exploded_data[exploded_data['genres_split'] == genre_name]
+            exploded_data[
+                (exploded_data['genres_split'] == genre_name) & (exploded_data['Year'] <= 2000)
+            ]
             .groupby('Year')
             .size()
-            .reset_index(name='Count')
         )
         return genre_counts
 
-    def run(self):
+    def run(self, parent=None):
         """
         Launch the Genre Search application.
+        :param parent: Optional parent window for the Toplevel window.
         """
-        root = tk.Tk()
-        root.title("Search Movies by Genre")
+        if parent is None:
+            messagebox.showerror("Error", "No parent window provided.")
+            return
 
-        # Set window size
-        root.geometry("500x500")
+        # Create a Toplevel window
+        self.window = tk.Toplevel(parent)
+        self.window.title("Search Movies by Genre")
+        self.window.geometry("700x500")
 
-        # Create a frame for the genre selection and results
-        self.main_frame = tk.Frame(root)
+        self.main_frame = tk.Frame(self.window)
         self.main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
-        # Dropdown for genre selection
         tk.Label(self.main_frame, text="Select Genre:").grid(row=0, column=0, sticky=tk.W)
         self.genre_var = tk.StringVar()
 
-        # Extract unique, trimmed genres for dropdown
         genres = sorted(
             set(
                 genre.strip()
@@ -64,40 +98,116 @@ class GenreSearch:
         self.genre_dropdown = ttk.Combobox(self.main_frame, textvariable=self.genre_var, values=genres, state="readonly")
         self.genre_dropdown.grid(row=0, column=1, padx=5)
 
-        # Button to show counts
-        search_button = tk.Button(self.main_frame, text="Search", command=self.show_genre_counts)
+        search_button = tk.Button(self.main_frame, text="Search Movies", command=self.show_genre_movies)
         search_button.grid(row=0, column=2, padx=5)
 
-        # Table to display results
-        self.tree = ttk.Treeview(self.main_frame, columns=("Year", "Count"), show="headings", height=20)
-        self.tree.heading("Year", text="Year")
-        self.tree.heading("Count", text="Count")
-        self.tree.grid(row=1, column=0, columnspan=3, pady=5, sticky="nsew")
+        plot_button = tk.Button(self.main_frame, text="Plot Genre Count", command=self.generate_genre_count_plot)
+        plot_button.grid(row=0, column=3, padx=5)
 
-        # Vertical scrollbar for the table
+        revenue_plot_button = tk.Button(
+            self.main_frame, text="Plot Genre Revenue", command=self.generate_genre_revenue_plot
+        )
+        revenue_plot_button.grid(row=0, column=4, padx=5)
+
+        self.tree = ttk.Treeview(
+            self.main_frame, columns=("Year", "Title", "Adjusted Gross Revenue"), show="headings", height=20
+        )
+        self.tree.heading("Year", text="Year")
+        self.tree.heading("Title", text="Title")
+        self.tree.heading("Adjusted Gross Revenue", text="Adjusted Gross Revenue ($)")
+        self.tree.grid(row=1, column=0, columnspan=5, pady=5, sticky="nsew")
+
         scrollbar = ttk.Scrollbar(self.main_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscroll=scrollbar.set)
-        scrollbar.grid(row=1, column=3, sticky="ns")
+        scrollbar.grid(row=1, column=5, sticky="ns")
 
-        # Run the main loop
-        root.mainloop()
-
-    def show_genre_counts(self):
+    def show_genre_movies(self):
         """
-        Display the count of the selected genre by year in the table.
+        Display the list of movies for the selected genre in the table.
         """
-        selected_genre = self.genre_var.get()
+        selected_genre = self.genre_var.get().strip()
         if not selected_genre:
-            print("No genre selected.")
+            messagebox.showerror("Error", "No genre selected. Please select a genre from the dropdown.")
             return
 
-        # Get the genre counts
-        genre_counts = self.count_genre_by_year(selected_genre)
+        genre_movies = self.get_movies_by_genre(selected_genre)
+        if genre_movies.empty:
+            messagebox.showinfo("Info", f"No movies found for the genre: {selected_genre}.")
+            return
 
-        # Clear existing table data
+        # Round Adjusted_Gross_Revenue to 2 decimal places for display
+        if 'Adjusted_Gross_Revenue' in genre_movies.columns:
+            genre_movies['Adjusted_Gross_Revenue'] = genre_movies['Adjusted_Gross_Revenue'].round(2)
+
         for row in self.tree.get_children():
             self.tree.delete(row)
 
-        # Insert data into the table
-        for _, row in genre_counts.iterrows():
-            self.tree.insert("", tk.END, values=(row['Year'], row['Count']))
+        for _, row in genre_movies.iterrows():
+            self.tree.insert("", tk.END, values=(row['Year'], row['title'], row['Adjusted_Gross_Revenue']))
+
+    def generate_genre_count_plot(self):
+        """
+        Generate a graph for the selected genre showing the number of movies by year.
+        """
+        selected_genre = self.genre_var.get().strip()
+        if not selected_genre:
+            messagebox.showerror("Error", "No genre selected. Please select a genre from the dropdown.")
+            return
+
+        genre_counts = self.get_genre_counts(selected_genre)
+        if genre_counts.empty:
+            messagebox.showinfo("Info", f"No data to plot for the genre: {selected_genre}.")
+            return
+
+        plt.figure(figsize=(10, 6))
+        plt.plot(genre_counts.index, genre_counts.values, marker='o', label=f'{selected_genre} Movies')
+        plt.xlabel('Year')
+        plt.ylabel('Number of Movies')
+        plt.title(f'Number of {selected_genre} Movies by Year')
+        plt.xticks(rotation=45)
+        plt.grid(True, linestyle='--', linewidth=0.5)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
+
+    def generate_genre_revenue_plot(self):
+        """
+        Generate a graph for the selected genre showing adjusted gross revenue by year.
+        """
+        selected_genre = self.genre_var.get().strip()
+        if not selected_genre:
+            messagebox.showerror("Error", "No genre selected. Please select a genre from the dropdown.")
+            return
+
+        genre_movies = self.get_movies_by_genre(selected_genre)
+        if genre_movies.empty:
+            messagebox.showinfo("Info", f"No data to plot for the genre: {selected_genre}.")
+            return
+
+        # Calculate tick positions for 3-year increments
+        min_year = genre_movies['Year'].min()
+        max_year = genre_movies['Year'].max()
+        ticks = np.arange(min_year, max_year + 1, 3) # 3 year increment
+
+        plt.figure(figsize=(10, 6))
+        plt.bar(
+            genre_movies['Year'],
+            genre_movies['Adjusted_Gross_Revenue'],
+            color='orange',
+            label=f'{selected_genre} Revenue',
+        )
+
+        ax = plt.gca()
+        ax.yaxis.set_major_formatter(ScalarFormatter(useOffset=False))
+        plt.ticklabel_format(style='plain', axis='y')  # Force plain formatting
+        plt.xlabel('Year')
+
+        plt.ylabel('Adjusted Gross Revenue')
+        plt.title(f'Adjusted Gross Revenue for {selected_genre} by Year ($)')
+        plt.xticks(ticks, rotation=45)
+        plt.grid(True, linestyle='--', linewidth=0.5)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
+
+
