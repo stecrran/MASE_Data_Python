@@ -2,22 +2,15 @@ import pandas as pd
 from tabulate import tabulate
 import re
 
-
+# Initializes the FetchData class with an existing database connection.
 class FetchData:
     def __init__(self, connection):
-        """
-        Initializes the FetchData class with an existing database connection.
-        :param connection: Database connection object.
-        """
         self.connection = connection
         self.inflation_data = self.get_inflation_data()  # Initialize inflation data
 
-    # CPI data from https://www.usinflationcalculator.com/inflation/consumer-price-index-and-annual-percent-changes-from-1913-to-2008/
+    # Returns inflation data as a DataFrame.
     @staticmethod
     def get_inflation_data():
-        """
-        Returns the inflation data as a DataFrame.
-        """
         return pd.DataFrame({
             'Year': [1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928,
                      1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944,
@@ -35,52 +28,27 @@ class FetchData:
                          3.4]
         }).set_index('Year')
 
-
-    def calculate_percentage_difference(self, row):
-        """
-        Calculate the percentage difference using the formula:
-        % = (Adjusted Gross Revenue / Adjusted Budget) * 100
-        :param row: A pandas DataFrame row.
-        :return: The percentage difference as a float or None if invalid data.
-        """
-        try:
-            if pd.notna(row['Adjusted_Gross_Revenue']) and pd.notna(row['Adjusted_Budget']) and row['Adjusted_Budget'] != 0:
-                return (row['Adjusted_Gross_Revenue'] / row['Adjusted_Budget']) * 100
-            else:
-                return None
-        except Exception as e:
-            print(f"Error calculating percentage for row: {e}")
-            return None
-
-
+    # Adjusts values in accordance with inflation
     def calculate_adjusted_value(self, year, value):
-        """
-        Adjusts a value for inflation to 2023 using the provided inflation data.
-        """
         if pd.isna(value):
             return None
-
         try:
-            # Ensure year and inflation index are comparable
             year = int(year)
             self.inflation_data.index = self.inflation_data.index.astype(int)
         except ValueError:
             return value
-
         if year not in self.inflation_data.index:
-            return value  # Return the original value without adjustment
-
+            return value
         relevant_data = self.inflation_data.loc[year:2023, '% Change'].dropna()
         inflation_multipliers = 1 + (relevant_data / 100)
         cumulative_multiplier = inflation_multipliers.prod()
+        return value * cumulative_multiplier
 
-        adjusted_value = value * cumulative_multiplier
-        return adjusted_value
-
+    # Fetches and processes movie data, calculates adjusted values and % Profit / Loss.
     def fetch_and_process_movie_data(self):
         if self.connection is None:
             print("Error: Database connection not established.")
-            return
+            return None
 
         try:
             # Fetch raw data
@@ -92,21 +60,21 @@ class FetchData:
             # Merge dataframes to simulate INNER JOIN on movieid
             merged = movies.merge(genres, on="movieid").merge(business, on="movieid")
 
-            # Filter rows where business.businesstext contains 'GR' and explicitly create a copy
+            # Filter rows where businesstext contains 'GR'
             filtered = merged[merged["businesstext"].str.contains("GR", na=False)].copy()
 
-            # Function to extract detailed business information
+            # Extract business information
             def extract_detailed_business_info(text):
                 info = {
                     "Currency": None,
                     "Budget": None,
                     "Gross Revenue": None,
-                    "Additional Data": None,
-                    "Copyright": None
+                    "Additional Data": None
                 }
                 budget_match = re.search(r'BT:\s*([A-Z]{3})\s*([\d,]+)', text)
                 gross_revenue_match = re.search(r'GR:\s*([A-Z]{3})\s*([\d,]+)', text)
                 additional_data_match = re.findall(r'AD:\s*([^\n]+)', text)
+
                 if budget_match:
                     info['Currency'] = budget_match.group(1)
                     info['Budget'] = int(budget_match.group(2).replace(',', ''))
@@ -114,34 +82,51 @@ class FetchData:
                     info['Gross Revenue'] = int(gross_revenue_match.group(2).replace(',', ''))
                 if additional_data_match:
                     info['Additional Data'] = " | ".join(additional_data_match)
+
                 return pd.Series(info)
 
-            # Apply the detailed business information extraction
             detailed_info = filtered["businesstext"].apply(extract_detailed_business_info)
             filtered = pd.concat([filtered, detailed_info], axis=1)
 
-            # Remove rows that do not contain "USD" in Currency or Additional Data
+            # Filter rows with "USD" in Currency or Additional Data
             filtered = filtered[
                 (filtered["Currency"] == "USD") |
                 (filtered["Additional Data"].str.contains("USD", na=False))
                 ]
 
-            # Adjust budget and gross revenue for inflation
-            filtered['Adjusted_Budget'] = filtered.apply(
-                lambda row: self.calculate_adjusted_value(row['year'], row['Budget']), axis=1
-            )
-            filtered['Adjusted_Gross_Revenue'] = filtered.apply(
-                lambda row: self.calculate_adjusted_value(row['year'], row['Gross Revenue']), axis=1
-            )
+            # adjust budget
+            def adjust_budget(row):
+                return self.calculate_adjusted_value(row['year'], row['Budget'])
 
-            # Calculate percentage difference
-            filtered['Percentage_Difference'] = filtered.apply(self.calculate_percentage_difference, axis=1)
+            # adjust gross revenue
+            def adjust_gross_revenue(row):
+                return self.calculate_adjusted_value(row['year'], row['Gross Revenue'])
 
-            # Define a function for concatenating genres
+            # calculate % Profit / Loss
+            def calculate_percentage_profit_loss(row):
+
+                try:
+                    if (
+                            pd.notna(row['Adjusted_Gross_Revenue'])
+                            and pd.notna(row['Adjusted_Budget'])
+                            and row['Adjusted_Budget'] != 0
+                    ):
+                        return ((row['Adjusted_Gross_Revenue'] - row['Adjusted_Budget']) / row['Adjusted_Budget']) * 100
+                    return None
+                except Exception as e:
+                    print(f"Error calculating % Profit / Loss for row: {e}")
+                    return None
+
+            # Apply adjustments and calculations
+            filtered['Adjusted_Budget'] = filtered.apply(adjust_budget, axis=1)
+            filtered['Adjusted_Gross_Revenue'] = filtered.apply(adjust_gross_revenue, axis=1)
+            filtered['Percentage_Profit_Loss'] = filtered.apply(calculate_percentage_profit_loss, axis=1)
+
+            # Concatenate genres for grouped data
             def concatenate_genres(genre_series):
                 return ", ".join(genre_series)
 
-            # Group by movieid, title, and year
+            # Group data by movieid, title, and year
             grouped = filtered.groupby(["movieid", "title", "year"]).agg(
                 genres=("genre", concatenate_genres),
                 Currency=("Currency", "first"),
@@ -149,29 +134,25 @@ class FetchData:
                 Adjusted_Budget=("Adjusted_Budget", "first"),
                 Gross_Revenue=("Gross Revenue", "first"),
                 Adjusted_Gross_Revenue=("Adjusted_Gross_Revenue", "first"),
-                Percentage_Difference=("Percentage_Difference", "first"),
+                Percentage_Profit_Loss=("Percentage_Profit_Loss", "first"),
                 Additional_Data=("Additional Data", "first")
             ).reset_index()
 
-            # Format "Budget", "Gross Revenue", and percentage difference to avoid exponential notation
-            def format_values(x):
-                return f"{x:,.2f}" if pd.notna(x) else None
+            # Rename 'year' to 'Year' for consistency
+            grouped.rename(columns={"year": "Year"}, inplace=True)
 
-            for col in ["Budget", "Gross_Revenue", "Adjusted_Budget", "Adjusted_Gross_Revenue",
-                        "Percentage_Difference"]:
-                grouped[col] = grouped[col].apply(format_values)
+            # Save to CSV. Try block used to prevent interference with return of dataframe if file is open
+            try:
+                print("Attempting to write to file.")
+                output_file = "processed_movie_data.csv"
+                grouped.to_csv(output_file, index=False)
+            except Exception as e:
+                print(f"An error occurred while saving the file: {e}")
 
-            # Sort by year (oldest to newest)
-            grouped = grouped.sort_values(by="year", ascending=True)
-
-            # Save results to a CSV file
-            output_file = "processed_movie_data.csv"
-            grouped.to_csv(output_file, index=False)
-            print(f"Results saved to {output_file}")
+            return grouped
 
         except Exception as e:
             print(f"An error occurred: {e}")
-
-
+            return None
 
 

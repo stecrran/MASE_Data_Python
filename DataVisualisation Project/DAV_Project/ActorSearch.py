@@ -5,19 +5,13 @@ import re
 
 
 class ActorSearch:
+    # Initialize the ActorSearch class with a database connection.
     def __init__(self, db_connection):
-        """
-        Initialize the ActorSearch class with a database connection.
-        :param db_connection: SQLAlchemy database connection object.
-        """
         self.db_connection = db_connection
         self.character_window = None
 
-
+    # Launch the Actor Search application.
     def run(self):
-        """
-        Launch the Actor Movie Search application.
-        """
         root = tk.Tk()
         root.title("Search movie by Actor")
 
@@ -70,24 +64,15 @@ class ActorSearch:
         # Run the main loop
         root.mainloop()
 
-
+    # Fetch all actors from the database.
     def fetch_all_actors(self):
-        """
-        Fetch all actors from the database.
-        :return: List of actors as (actorid, name) tuples.
-        """
         query = text("SELECT actorid, name FROM actors")
         with self.db_connection.connect() as conn:
             return conn.execute(query).fetchall()
 
-
+    # Fetch all movies and characters associated with a specific actor ID.
     def fetch_movies_and_characters_for_actor(self, actorid):
-        """
-        Fetch all movies and characters associated with a specific actor ID.
-        Extract character names from square brackets in as_character.
-        :param actorid: The actor ID to fetch movies and characters for.
-        :return: List of tuples containing movie title and character played.
-        """
+        # use SQL query for required joins
         query = text("""
         SELECT mov.title, mov_actor.as_character
         FROM movies mov
@@ -97,7 +82,7 @@ class ActorSearch:
         with self.db_connection.connect() as conn:
             results = conn.execute(query, {"actorid": actorid}).fetchall()
 
-        # Extract character name from square brackets using regex
+        # Extract character name from square brackets
         parsed_results = []
         for title, as_character in results:
             if as_character:
@@ -109,12 +94,8 @@ class ActorSearch:
 
         return parsed_results
 
-
+    # Display actors
     def display_actors(self, actors):
-        """
-        Display actors in the table.
-        :param actors: List of (actorid, name) tuples to display.
-        """
         # Clear existing table data
         for row in self.tree.get_children():
             self.tree.delete(row)
@@ -123,32 +104,25 @@ class ActorSearch:
         for actorid, name in actors:
             self.tree.insert("", tk.END, values=(actorid, name))
 
-
+    # Search for actors by name.
     def search_actor(self, event=None):
-        """
-        Search for actors by name.
-        """
         search_text = self.search_entry.get()
         query = text("SELECT actorid, name FROM actors WHERE name LIKE :search_text")
         with self.db_connection.connect() as conn:
             actors = conn.execute(query, {"search_text": f"%{search_text}%"}).fetchall()
         self.display_actors(actors)
 
-
+    # Clear the search field and reset the actor list.
     def clear_search(self):
         """
-        Clear the search field and reset the actor list.
         Tkinter.Entry.delete [https://tedboy.github.io/python_stdlib/generated/generated/Tkinter.Entry.delete.html]
         [https://python-course.eu/tkinter/entry-widgets-in-tkinter.php]
         """
         self.search_entry.delete(0, tk.END)
         self.display_actors(self.fetch_all_actors())
 
-
+    # Manage actor selection and display corresponding movies and characters.
     def on_row_select(self, event):
-        """
-        Handle actor selection and display their movies and characters.
-        """
         selected_item = self.tree.selection()
         if selected_item:
             actorid = self.tree.item(selected_item[0])["values"][0]
@@ -161,11 +135,8 @@ class ActorSearch:
             for movie, character in self.movies_and_characters:
                 self.movies_listbox.insert(tk.END, movie)
 
-
+    # Manage movie selection and display the character name in a separate window.
     def on_movie_select(self, event):
-        """
-        Handle movie selection and display the character in a separate window.
-        """
         selected_index = self.movies_listbox.curselection()
         if selected_index:
             movie, character = self.movies_and_characters[selected_index[0]]

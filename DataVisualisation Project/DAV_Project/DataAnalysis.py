@@ -7,7 +7,7 @@ class DataAnalysis:
     def __init__(self, connection):
         self.connection = connection
         self.table = ""
-        self.connectNow()
+        #self.connectNow()
 
 
     def connectNow(self):
