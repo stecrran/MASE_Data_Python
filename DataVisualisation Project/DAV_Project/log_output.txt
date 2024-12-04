@@ -1,0 +1,316 @@
+Selected table: actors
+Data analysis completed.
+Selected table: producers
+Data analysis completed.
+Selected table: actors
+Selecting table 'actors' for analysis.
+
+
+DataFrame Info for table actors:
+None
+
+
+Number of Unique Items in actors:
+actorid    98690
+name       98686
+sex            2
+
+
+Unique Items in Each Column for table actors:
+actorid    [4, 16, 28, 566, 580, 636, 769, 797, 802, 808,...
+name       [$hort, Too, 'Bear'Boyd, Steven, 'Dead End' Ki...
+sex                                                   [M, F]
+
+
+Table Preview:
++---+---------+----------------------+-----+
+|   | actorid |         name         | sex |
++---+---------+----------------------+-----+
+| 0 |    4    |      $hort, Too      |  M  |
+| 1 |   16    |  'Bear'Boyd, Steven  |  M  |
+| 2 |   28    | 'Dead End' Kids, The |  M  |
+| 3 |   566   |    Aaby, Kristian    |  M  |
+| 4 |   580   |        Aadil         |  M  |
+| 5 |   636   |      Aaker, Lee      |  M  |
+| 6 |   769   | Aamodt, Thor Michael |  M  |
+| 7 |   797   |       Aar, Jim       |  M  |
+| 8 |   802   |    Aaran, Abraxas    |  M  |
+| 9 |   808   |    Aard, Frank J.    |  M  |
++---+---------+----------------------+-----+
++-------+---------+--------------------------+-----+
+|       | actorid |           name           | sex |
++-------+---------+--------------------------+-----+
+| 98680 | 2748728 |      Ålenius, Inga       |  F  |
+| 98681 | 2748766 | Åström-De Fina, Marianna |  F  |
+| 98682 | 2749009 |   Ólafsdóttir, Katrín    |  F  |
+| 98683 | 2749028 |      Ónodi, Eszter       |  F  |
+| 98684 | 2749144 |      Ôno, Yuka (I)       |  F  |
+| 98685 | 2749162 |      Ôshima, Akiyo       |  F  |
+| 98686 | 2749168 |      Ôshima, Yukari      |  F  |
+| 98687 | 2749204 |       Ôtani, Ikue        |  F  |
+| 98688 | 2749377 |  Örnólfsdóttir, Álfrún   |  F  |
+| 98689 | 2749386 |        Öss, Eniko        |  F  |
++-------+---------+--------------------------+-----+
+
+
+Data analysis completed.
+Selected table: actors
+Selecting table 'actors' for analysis.
+DataFrame Info for table actors:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 98690 entries, 0 to 98689
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   actorid  98690 non-null  int64 
+ 1   name     98690 non-null  object
+ 2   sex      98690 non-null  object
+dtypes: int64(1), object(2)
+memory usage: 2.3+ MB
+
+Number of Unique Items in actors:
+actorid    98690
+name       98686
+sex            2
+dtype: int64
+Unique Items in Each Column for table actors:
+actorid    [4, 16, 28, 566, 580, 636, 769, 797, 802, 808,...
+name       [$hort, Too, 'Bear'Boyd, Steven, 'Dead End' Ki...
+sex                                                   [M, F]
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+----------------------+-----+
+|   | actorid |         name         | sex |
++---+---------+----------------------+-----+
+| 0 |    4    |      $hort, Too      |  M  |
+| 1 |   16    |  'Bear'Boyd, Steven  |  M  |
+| 2 |   28    | 'Dead End' Kids, The |  M  |
+| 3 |   566   |    Aaby, Kristian    |  M  |
+| 4 |   580   |        Aadil         |  M  |
+| 5 |   636   |      Aaker, Lee      |  M  |
+| 6 |   769   | Aamodt, Thor Michael |  M  |
+| 7 |   797   |       Aar, Jim       |  M  |
+| 8 |   802   |    Aaran, Abraxas    |  M  |
+| 9 |   808   |    Aard, Frank J.    |  M  |
++---+---------+----------------------+-----+
+
+Table Preview (Last 10 rows):
+
++-------+---------+--------------------------+-----+
+|       | actorid |           name           | sex |
++-------+---------+--------------------------+-----+
+| 98680 | 2748728 |      Ålenius, Inga       |  F  |
+| 98681 | 2748766 | Åström-De Fina, Marianna |  F  |
+| 98682 | 2749009 |   Ólafsdóttir, Katrín    |  F  |
+| 98683 | 2749028 |      Ónodi, Eszter       |  F  |
+| 98684 | 2749144 |      Ôno, Yuka (I)       |  F  |
+| 98685 | 2749162 |      Ôshima, Akiyo       |  F  |
+| 98686 | 2749168 |      Ôshima, Yukari      |  F  |
+| 98687 | 2749204 |       Ôtani, Ikue        |  F  |
+| 98688 | 2749377 |  Örnólfsdóttir, Álfrún   |  F  |
+| 98689 | 2749386 |        Öss, Eniko        |  F  |
++-------+---------+--------------------------+-----+
+Data analysis completed.
+Selected table: movies
+Selecting table 'movies' for analysis.
+DataFrame Info for table movies:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3832 entries, 0 to 3831
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   movieid  3832 non-null   int64 
+ 1   title    3832 non-null   object
+ 2   year     3832 non-null   object
+dtypes: int64(1), object(2)
+memory usage: 89.9+ KB
+
+Number of Unique Items in movies:
+movieid    3832
+title      3832
+year        108
+dtype: int64
+Unique Items in Each Column for table movies:
+movieid    [1672052, 1672111, 1672580, 1672716, 1672946, ...
+title      ['Breaker' Morant (1980), 'Crocodile' Dundee I...
+year       [1980, 1988, 1997, 1986, 2014, 1961, 1996, 199...
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+--------------------------------------+------+
+|   | movieid |                title                 | year |
++---+---------+--------------------------------------+------+
+| 0 | 1672052 |       'Breaker' Morant (1980)        | 1980 |
+| 1 | 1672111 |     'Crocodile' Dundee II (1988)     | 1988 |
+| 2 | 1672580 |      'Til There Was You (1997)       | 1997 |
+| 3 | 1672716 |        'night, Mother (1986)         | 1986 |
+| 4 | 1672946 |    ...And Justice for All (2014)     | 2014 |
+| 5 | 1673647 | 1-2-3-4 ou Les collants noirs (1961) | 1961 |
+| 6 | 1673658 |             1-900 (1996)             | 1996 |
+| 7 | 1673848 |  10 Things I Hate About You (1999)   | 1999 |
+| 8 | 1674388 |        101 Dalmatians (1996)         | 1996 |
+| 9 | 1674737 |         12 Angry Men (1957)          | 1957 |
++---+---------+--------------------------------------+------+
+
+Table Preview (Last 10 rows):
+
++------+---------+---------------------------------+------+
+|      | movieid |              title              | year |
++------+---------+---------------------------------+------+
+| 3822 | 2587077 | Zbogum na dvaesetiot vek (1998) | 1998 |
+| 3823 | 2587740 |         Zerkalo (1975)          | 1975 |
+| 3824 | 2587786 |       Zero Effect (1998)        | 1998 |
+| 3825 | 2587976 |     Zeus and Roxanne (1997)     | 1997 |
+| 3826 | 2590181 |         Zone 39 (1996)          | 1996 |
+| 3827 | 2591814 |         eXistenZ (1999)         | 1999 |
+| 3828 | 2592334 |      ¡Three Amigos! (1986)      | 1986 |
+| 3829 | 2592963 |    À nous la liberté (1931)     | 1931 |
+| 3830 | 2593112 |      Á köldum klaka (1995)      | 1995 |
+| 3831 | 2593313 |          Átame! (1990)          | 1990 |
++------+---------+---------------------------------+------+
+Data analysis completed.
+Selected table: actors
+Selecting table 'actors' for analysis.
+DataFrame Info for table actors:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 98690 entries, 0 to 98689
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   actorid  98690 non-null  int64 
+ 1   name     98690 non-null  object
+ 2   sex      98690 non-null  object
+dtypes: int64(1), object(2)
+memory usage: 2.3+ MB
+
+Number of Unique Items in actors:
+actorid    98690
+name       98686
+sex            2
+dtype: int64
+Unique Items in Each Column for table actors:
+actorid    [4, 16, 28, 566, 580, 636, 769, 797, 802, 808,...
+name       [$hort, Too, 'Bear'Boyd, Steven, 'Dead End' Ki...
+sex                                                   [M, F]
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+----------------------+-----+
+|   | actorid |         name         | sex |
++---+---------+----------------------+-----+
+| 0 |    4    |      $hort, Too      |  M  |
+| 1 |   16    |  'Bear'Boyd, Steven  |  M  |
+| 2 |   28    | 'Dead End' Kids, The |  M  |
+| 3 |   566   |    Aaby, Kristian    |  M  |
+| 4 |   580   |        Aadil         |  M  |
+| 5 |   636   |      Aaker, Lee      |  M  |
+| 6 |   769   | Aamodt, Thor Michael |  M  |
+| 7 |   797   |       Aar, Jim       |  M  |
+| 8 |   802   |    Aaran, Abraxas    |  M  |
+| 9 |   808   |    Aard, Frank J.    |  M  |
++---+---------+----------------------+-----+
+
+Table Preview (Last 10 rows):
+
++-------+---------+--------------------------+-----+
+|       | actorid |           name           | sex |
++-------+---------+--------------------------+-----+
+| 98680 | 2748728 |      Ålenius, Inga       |  F  |
+| 98681 | 2748766 | Åström-De Fina, Marianna |  F  |
+| 98682 | 2749009 |   Ólafsdóttir, Katrín    |  F  |
+| 98683 | 2749028 |      Ónodi, Eszter       |  F  |
+| 98684 | 2749144 |      Ôno, Yuka (I)       |  F  |
+| 98685 | 2749162 |      Ôshima, Akiyo       |  F  |
+| 98686 | 2749168 |      Ôshima, Yukari      |  F  |
+| 98687 | 2749204 |       Ôtani, Ikue        |  F  |
+| 98688 | 2749377 |  Örnólfsdóttir, Álfrún   |  F  |
+| 98689 | 2749386 |        Öss, Eniko        |  F  |
++-------+---------+--------------------------+-----+
+Data analysis completed.
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Selected table: editors
+Selecting table 'editors' for analysis.
+DataFrame Info for table editors:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1973 entries, 0 to 1972
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   editorid  1973 non-null   int64 
+ 1   name      1973 non-null   object
+dtypes: int64(1), object(1)
+memory usage: 31.0+ KB
+
+Number of Unique Items in editors:
+editorid    1973
+name        1973
+dtype: int64
+Unique Items in Each Column for table editors:
+      editorid                  name
+0          109          Abadal, Pere
+1          317        Abel, Doug (I)
+2          503  Abramowitz, Jane Pia
+3          568     Abroms, Edward M.
+4          734       Ackland, Noreen
+...        ...                   ...
+1968    202094       Zinoman, Amanda
+1969    202382     Zuckerman, Lauren
+1970    202425      Zumbrunnen, Eric
+1971    202711  Óskarsdóttir, Valdís
+1972    202789         Øverås, Håkon
+
+[1973 rows x 2 columns]
+Table Preview (First 10 rows):
+
++---+----------+----------------------+
+|   | editorid |         name         |
++---+----------+----------------------+
+| 0 |   109    |     Abadal, Pere     |
+| 1 |   317    |    Abel, Doug (I)    |
+| 2 |   503    | Abramowitz, Jane Pia |
+| 3 |   568    |  Abroms, Edward M.   |
+| 4 |   734    |   Ackland, Noreen    |
+| 5 |   772    |   Acosta, Tom (I)    |
+| 6 |   804    |    Adair, Sandra     |
+| 7 |   826    |    Adam, Peter R.    |
+| 8 |   911    |     Adams, Edgar     |
+| 9 |   1006   |   Adams, Tracy (I)   |
++---+----------+----------------------+
+
+Table Preview (Last 10 rows):
+
++------+----------+----------------------+
+|      | editorid |         name         |
++------+----------+----------------------+
+| 1963 |  201990  |  Zimmerman, Don (I)  |
+| 1964 |  201993  | Zimmerman, Eric (I)  |
+| 1965 |  202054  |     Zimny, Thom      |
+| 1966 |  202091  |    Zinner, Katina    |
+| 1967 |  202092  |    Zinner, Peter     |
+| 1968 |  202094  |   Zinoman, Amanda    |
+| 1969 |  202382  |  Zuckerman, Lauren   |
+| 1970 |  202425  |   Zumbrunnen, Eric   |
+| 1971 |  202711  | Óskarsdóttir, Valdís |
+| 1972 |  202789  |    Øverås, Håkon     |
++------+----------+----------------------+
+Data analysis completed.

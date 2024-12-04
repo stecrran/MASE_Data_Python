@@ -32,6 +32,23 @@ class VisualiseData:
         return filtered_data[(filtered_data['Year'] >= 1921) & (filtered_data['Year'] <= 2000)]
 
 
+    def visualiseGenderDistribution(self):
+        # Validate connection before visualizing client data
+        if self.mydb is None:
+            print("Error: Database connection not established.")
+            return
+        try:
+            frame = pd.read_sql("SELECT * FROM actors", self.mydb)
+            pd.set_option('display.expand_frame_repr', False)
+            gender_counts = frame['sex'].value_counts(dropna=False)
+            plt.pie(gender_counts, labels=gender_counts.index, autopct='%.1f%%')
+            plt.legend(gender_counts.index)
+            plt.title("Actors - Gender Distribution")
+            plt.show()
+        except Exception as error:
+            print(f"Error while visualizing client data: {error}")
+
+
     # Plot % Profit / Loss by year
     def plot_percentage_profit_loss_by_year(self, data):
         try:

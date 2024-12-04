@@ -184,30 +184,37 @@ class GenreSearch:
             messagebox.showinfo("Info", f"No data to plot for the genre: {selected_genre}.")
             return
 
-        # Calculate tick positions for 3-year increments
-        min_year = genre_movies['Year'].min()
-        max_year = genre_movies['Year'].max()
-        ticks = np.arange(min_year, max_year + 1, 3) # 3 year increment
+        # Group by year and calculate the total Adjusted Gross Revenue for each year
+        revenue_by_year = genre_movies.groupby('Year')['Adjusted_Gross_Revenue'].sum().reset_index()
 
+        # Calculate tick positions for 3-year increments
+        min_year = revenue_by_year['Year'].min()
+        max_year = revenue_by_year['Year'].max()
+        ticks = np.arange(min_year, max_year + 1, 3)  # 3-year increment
+
+        # Plot the bar chart
         plt.figure(figsize=(10, 6))
         plt.bar(
-            genre_movies['Year'],
-            genre_movies['Adjusted_Gross_Revenue'],
+            revenue_by_year['Year'],
+            revenue_by_year['Adjusted_Gross_Revenue'],
             color='orange',
             label=f'{selected_genre} Revenue',
         )
 
+        # Format y-axis to avoid scientific notation
         ax = plt.gca()
         ax.yaxis.set_major_formatter(ScalarFormatter(useOffset=False))
-        plt.ticklabel_format(style='plain', axis='y')  # Force plain formatting
-        plt.xlabel('Year')
+        plt.ticklabel_format(style='plain', axis='y')
 
-        plt.ylabel('Adjusted Gross Revenue')
-        plt.title(f'Adjusted Gross Revenue for {selected_genre} by Year ($)')
+        # Add labels and title
+        plt.xlabel('Year')
+        plt.ylabel('Adjusted Gross Revenue ($)')
+        plt.title(f'Adjusted Gross Revenue for {selected_genre} by Year')
         plt.xticks(ticks, rotation=45)
         plt.grid(True, linestyle='--', linewidth=0.5)
         plt.legend()
         plt.tight_layout()
         plt.show()
+
 
 
