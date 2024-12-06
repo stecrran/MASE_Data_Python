@@ -7,6 +7,7 @@ class DBConnection_Alchemy:
         self.mydb = None
         self.connectNow()  # Initialize database connection
 
+
     def connectNow(self):
         print(
             f"Attempting to connect using:\nHost: {self.host}\nUser: {self.user}\nPort: {self.port}\nDatabase: {self.database}"

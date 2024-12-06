@@ -1,15 +1,17 @@
 import tkinter as tk
 from tkinter import font, messagebox, simpledialog
 from PIL import ImageTk, Image
-
+from VisualisationApp import VisualisationApp
 
 class AppGUI(tk.Frame):
-    def __init__(self, master=None, actor_search_app=None, genre_search_app=None, data_analysis_app=None):
+    def __init__(self, master=None, actor_search_app=None, genre_search_app=None, data_analysis_app=None, visualise_data_app=None, business_and_movie_data=None):
         tk.Frame.__init__(self, master)
         self.master = master
         self.actor_search_app = actor_search_app
         self.genre_search_app = genre_search_app
         self.data_analysis_app = data_analysis_app
+        self.visualise_data_app = visualise_data_app
+        self.business_and_movie_data = business_and_movie_data
 
         self.master.title("Movie Data Application")
 
@@ -21,13 +23,15 @@ class AppGUI(tk.Frame):
         self.log_file = "log_output.txt"
 
         # Call initialize_ui to set up the UI
-        self.initialize_ui()
+        self.initializeUI()
 
         # Set up logging for DataAnalysis
         if data_analysis_app:
             self.data_analysis_app.log_function = self.writeToLog
 
-    def initialize_ui(self):
+
+    # User Interface layout
+    def initializeUI(self):
         # Log window
         self.log = tk.Text(self.master, state="disabled", height=10, width=60)
         self.log.grid(row=4, column=0, columnspan=2, sticky=tk.W)
@@ -35,7 +39,7 @@ class AppGUI(tk.Frame):
         self.scrollB.grid(row=4, column=2, sticky=tk.N + tk.S + tk.E + tk.W)
         self.log['yscrollcommand'] = self.scrollB.set
 
-        # Image
+        # Image for app header
         img_path = 'movie.png'
         try:
             image = Image.open(img_path)
@@ -55,7 +59,7 @@ class AppGUI(tk.Frame):
         self.actor_button = tk.Button(
             self.master,
             text="Actor Search",
-            command=self.launch_actor_search,
+            command=self.initActorSearch,
             font=self.font_2,
         )
         self.actor_button.grid(row=2, column=0, sticky=tk.N + tk.S + tk.E + tk.W)
@@ -63,7 +67,7 @@ class AppGUI(tk.Frame):
         self.genre_button = tk.Button(
             self.master,
             text="Genre Search",
-            command=self.launch_genre_search,
+            command=self.initGenreSearch,
             font=self.font_2,
         )
         self.genre_button.grid(row=2, column=1, sticky=tk.N + tk.S + tk.E + tk.W)
@@ -71,20 +75,27 @@ class AppGUI(tk.Frame):
         self.analysis_button = tk.Button(
             self.master,
             text="Run Data Analysis",
-            command=self.launch_data_analysis,
+            command=self.initDataAnalysis,
             font=self.font_2,
         )
         self.analysis_button.grid(row=3, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
 
-        self.close_button = tk.Button(
-            self.master, text="Close", command=self.close_application, font=self.font_2
+        self.visualisation_button = tk.Button(
+            self.master,
+            text="Open Visualization App",
+            command=self.initVisualisationApp,
+            font=self.font_2,
         )
-        self.close_button.grid(row=5, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
+        self.visualisation_button.grid(row=5, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
 
+        self.close_button = tk.Button(
+            self.master, text="Close", command=self.closeApplication, font=self.font_2
+        )
+        self.close_button.grid(row=6, column=0, columnspan=2, sticky=tk.N + tk.S + tk.E + tk.W)
+
+
+    # Writes messages to the log window
     def writeToLog(self, msg):
-        """
-        Writes a message to the log window.
-        """
         try:
             if isinstance(msg, str):
                 log_msg = msg
@@ -101,19 +112,25 @@ class AppGUI(tk.Frame):
         except Exception as e:
             print(f"Error writing to log: {e}")
 
-    def launch_actor_search(self):
+
+    # Initialise Actor Search application
+    def initActorSearch(self):
         if self.actor_search_app:
             self.actor_search_app.run()
         else:
             messagebox.showerror("Error", "Actor Search app not initialized.")
 
-    def launch_genre_search(self):
+
+    # Initialise Genre Search application
+    def initGenreSearch(self):
         if self.genre_search_app:
             self.genre_search_app.run(parent=self.master)
         else:
             messagebox.showerror("Error", "Genre Search app not initialized.")
 
-    def launch_data_analysis(self):
+
+    # Initalise Data Analysis for a selected table (in log window)
+    def initDataAnalysis(self):
         if self.data_analysis_app:
             table_name = simpledialog.askstring(
                 "Table Selection",
@@ -129,5 +146,16 @@ class AppGUI(tk.Frame):
         else:
             messagebox.showerror("Error", "Data Analysis app not initialized.")
 
-    def close_application(self):
+
+    # Initialise basic Visualisation menu
+    def initVisualisationApp(self):
+        if self.visualise_data_app is not None and not self.business_and_movie_data.empty:
+            VisualisationApp(master=self.master, visualise_data_app=self.visualise_data_app,
+                             data=self.business_and_movie_data)
+        else:
+            messagebox.showerror("Error", "Visualisation app or data not initialized or data is empty.")
+
+
+    # Close all
+    def closeApplication(self):
         self.master.destroy()

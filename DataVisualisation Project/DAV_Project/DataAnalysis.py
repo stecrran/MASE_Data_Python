@@ -3,7 +3,6 @@ from sqlalchemy import inspect
 from tabulate import tabulate
 import io
 
-
 class DataAnalysis:
     def __init__(self, connection, log_function=None):
         self.connection = connection
@@ -17,11 +16,9 @@ class DataAnalysis:
         table_names = inspector.get_table_names()
         self.log_function("Tables in the database:\n* " + "\n* ".join(table_names))
 
+
+    # Load data, perform exploratory data analysis (EDA)
     def performEDA(self):
-        """
-        Load data and perform exploratory data analysis (EDA).
-        """
-        # Validate connection and table selection
         if self.connection is None:
             self.log_function("Error: Database connection not established.")
             return
@@ -52,16 +49,15 @@ class DataAnalysis:
         except Exception as error:
             self.log_function(f"Error during EDA on table '{self.table}': {error}")
 
+    # Set table for analysis and trigger EDA
     def selectTable(self, table_name):
-        """
-        Set the table for analysis and trigger EDA.
-        """
         try:
             self.table = table_name
             self.log_function(f"Selecting table '{table_name}' for analysis.")
             self.performEDA()
         except Exception as e:
             self.log_function(f"Error selecting table '{table_name}': {e}")
+
 
     def printDF(self, dataframe):
         # Display the first and last ten rows of the DataFrame

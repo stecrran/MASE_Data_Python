@@ -314,3 +314,915 @@ Table Preview (Last 10 rows):
 | 1972 |  202789  |    Øverås, Håkon     |
 +------+----------+----------------------+
 Data analysis completed.
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Selected table: writers
+Selecting table 'writers' for analysis.
+DataFrame Info for table writers:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5559 entries, 0 to 5558
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   writerid  5559 non-null   int64 
+ 1   name      5559 non-null   object
+dtypes: int64(1), object(1)
+memory usage: 87.0+ KB
+
+Number of Unique Items in writers:
+writerid    5559
+name        5559
+dtype: int64
+Unique Items in Each Column for table writers:
+      writerid                name
+0           70  Aalmuhammed, Jefri
+1          125          Aaron, Joe
+2          133         Aaron, Paul
+3          340       Abbey, Edward
+4          363  Abbott, George (I)
+...        ...                 ...
+5554    406628       Zweibel, Alan
+5555    406648       Zwick, Edward
+5556    407052        Éluard, Paul
+5557    407159      Ôshima, Nagisa
+5558    407170    Ôtomo, Katsuhiro
+
+[5559 rows x 2 columns]
+Table Preview (First 10 rows):
+
++---+----------+--------------------+
+|   | writerid |        name        |
++---+----------+--------------------+
+| 0 |    70    | Aalmuhammed, Jefri |
+| 1 |   125    |     Aaron, Joe     |
+| 2 |   133    |    Aaron, Paul     |
+| 3 |   340    |   Abbey, Edward    |
+| 4 |   363    | Abbott, George (I) |
+| 5 |   553    |     Abe, Kôbô      |
+| 6 |   718    |   Aberson, Helen   |
+| 7 |   854    | Abraham, Adam (I)  |
+| 8 |   904    |   Abrahams, Jim    |
+| 9 |   910    |   Abrahams, Mort   |
++---+----------+--------------------+
+
+Table Preview (Last 10 rows):
+
++------+----------+-------------------+
+|      | writerid |       name        |
++------+----------+-------------------+
+| 5549 |  406349  | Zucker, David (I) |
+| 5550 |  406353  |   Zucker, Jerry   |
+| 5551 |  406380  |  Zuckmayer, Carl  |
+| 5552 |  406420  | Zulawski, Andrzej |
+| 5553 |  406549  | Zurlini, Valerio  |
+| 5554 |  406628  |   Zweibel, Alan   |
+| 5555 |  406648  |   Zwick, Edward   |
+| 5556 |  407052  |   Éluard, Paul    |
+| 5557 |  407159  |  Ôshima, Nagisa   |
+| 5558 |  407170  | Ôtomo, Katsuhiro  |
++------+----------+-------------------+
+Data analysis completed.
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Selected table: runningtimes
+Selecting table 'runningtimes' for analysis.
+DataFrame Info for table runningtimes:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5086 entries, 0 to 5085
+Data columns (total 4 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   movieid   5086 non-null   int64 
+ 1   time      5086 non-null   object
+ 2   addition  5086 non-null   object
+ 3   time1     5086 non-null   int64 
+dtypes: int64(2), object(2)
+memory usage: 159.1+ KB
+
+Number of Unique Items in runningtimes:
+movieid     3779
+time         836
+addition     219
+time1        204
+dtype: int64
+Unique Items in Each Column for table runningtimes:
+movieid     [1672052, 1672111, 1672580, 1672716, 1673647, ...
+time        [107, 108, 113, 96, 140, Portugal:125, 98, 97,...
+addition    [, (cut version), (premiere cut), (extended cu...
+time1       [107, 108, 113, 96, 140, 125, 98, 97, 103, 104...
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+--------------+---------------+-------+
+|   | movieid |     time     |   addition    | time1 |
++---+---------+--------------+---------------+-------+
+| 0 | 1672052 |     107      |               |  107  |
+| 1 | 1672111 |     108      |               |  108  |
+| 2 | 1672580 |     113      |               |  113  |
+| 3 | 1672716 |      96      |               |  96   |
+| 4 | 1673647 |     140      |               |  140  |
+| 5 | 1673647 | Portugal:125 | (cut version) |  125  |
+| 6 | 1673658 |      98      |               |  98   |
+| 7 | 1673848 |      97      |               |  97   |
+| 8 | 1674388 |     103      |               |  103  |
+| 9 | 1674737 |      96      |               |  96   |
++---+---------+--------------+---------------+-------+
+
+Table Preview (Last 10 rows):
+
++------+---------+------------+--------------+-------+
+|      | movieid |    time    |   addition   | time1 |
++------+---------+------------+--------------+-------+
+| 5076 | 2587976 |     98     |              |  98   |
+| 5077 | 2590181 |     95     |              |  95   |
+| 5078 | 2591814 |     97     |              |  97   |
+| 5079 | 2592334 |    104     |              |  104  |
+| 5080 | 2592963 |    104     |              |  104  |
+| 5081 | 2592963 |   USA:83   | (re-release) |  83   |
+| 5082 | 2592963 |   USA:97   |              |  97   |
+| 5083 | 2593112 | Germany:85 |              |  85   |
+| 5084 | 2593112 |   USA:83   |              |  83   |
+| 5085 | 2593313 |    111     |              |  111  |
++------+---------+------------+--------------+-------+
+Data analysis completed.
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Selected table: prodcompanies
+Selecting table 'prodcompanies' for analysis.
+DataFrame Info for table prodcompanies:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 9843 entries, 0 to 9842
+Data columns (total 2 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   movieid  9843 non-null   int64 
+ 1   name     9843 non-null   object
+dtypes: int64(1), object(1)
+memory usage: 153.9+ KB
+
+Number of Unique Items in prodcompanies:
+movieid    3766
+name       5341
+dtype: int64
+Unique Items in Each Column for table prodcompanies:
+movieid    [1672052, 1672111, 1672580, 1672716, 1672946, ...
+name       [7 Network [au], Australian Film Commission, T...
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+---------------------------------------------+
+|   | movieid |                    name                     |
++---+---------+---------------------------------------------+
+| 0 | 1672052 |               7 Network [au]                |
+| 1 | 1672052 |    Australian Film Commission, The [au]     |
+| 2 | 1672052 |              Pact Productions               |
+| 3 | 1672052 | South Australian Film Corporation, The [au] |
+| 4 | 1672111 |           Paramount Pictures [us]           |
+| 5 | 1672111 |             Rimfire Films [au]              |
+| 6 | 1672580 |        Lakeshore Entertainment [us]         |
+| 7 | 1672580 |           Paramount Pictures [us]           |
+| 8 | 1672716 |       Aaron Spelling Productions [us]       |
+| 9 | 1672716 |            Blackbird Productions            |
++---+---------+---------------------------------------------+
+
+Table Preview (Last 10 rows):
+
++------+---------+-----------------------------------------------------------------------+
+|      | movieid |                                 name                                  |
++------+---------+-----------------------------------------------------------------------+
+| 9833 | 2592334 |                              L.A. Films                               |
+| 9834 | 2592963 |                       Films Sonores Tobis [fr]                        |
+| 9835 | 2593112 |                  Altar Productions - (co-production)                  |
+| 9836 | 2593112 |                   Film Fonds [de] - (co-production)                   |
+| 9837 | 2593112 | Icelandic Film [is] - (co-production) (as Icelandic Film Corporation) |
+| 9838 | 2593112 |                                Icicle                                 |
+| 9839 | 2593112 |             Pandora Filmproduktion [de] - (co-production)             |
+| 9840 | 2593112 |                    Sunrise [jp] - (co-production)                     |
+| 9841 | 2593112 |            Zentropa Entertainments [dk] - (co-production)             |
+| 9842 | 2593313 |                          El Deseo S.A. [es]                           |
++------+---------+-----------------------------------------------------------------------+
+Data analysis completed.
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Tables in the database:
+* actors
+* business
+* countries
+* directors
+* distributors
+* editors
+* genres
+* language
+* movies
+* movies2actors
+* movies2directors
+* movies2editors
+* movies2producers
+* movies2writers
+* prodcompanies
+* producers
+* ratings
+* runningtimes
+* writers
+Selected table: goo
+Selecting table 'goo' for analysis.
+Error during EDA on table 'goo': (mysql.connector.errors.ProgrammingError) 1146 (42S02): Table 'imdb_full.goo' doesn't exist
+[SQL: SELECT * FROM goo]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Data analysis completed.
+Selected table: actors
+Selecting table 'actors' for analysis.
+DataFrame Info for table actors:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 98690 entries, 0 to 98689
+Data columns (total 3 columns):
+ #   Column   Non-Null Count  Dtype 
+---  ------   --------------  ----- 
+ 0   actorid  98690 non-null  int64 
+ 1   name     98690 non-null  object
+ 2   sex      98690 non-null  object
+dtypes: int64(1), object(2)
+memory usage: 2.3+ MB
+
+Number of Unique Items in actors:
+actorid    98690
+name       98686
+sex            2
+dtype: int64
+Unique Items in Each Column for table actors:
+actorid    [4, 16, 28, 566, 580, 636, 769, 797, 802, 808,...
+name       [$hort, Too, 'Bear'Boyd, Steven, 'Dead End' Ki...
+sex                                                   [M, F]
+dtype: object
+Table Preview (First 10 rows):
+
++---+---------+----------------------+-----+
+|   | actorid |         name         | sex |
++---+---------+----------------------+-----+
+| 0 |    4    |      $hort, Too      |  M  |
+| 1 |   16    |  'Bear'Boyd, Steven  |  M  |
+| 2 |   28    | 'Dead End' Kids, The |  M  |
+| 3 |   566   |    Aaby, Kristian    |  M  |
+| 4 |   580   |        Aadil         |  M  |
+| 5 |   636   |      Aaker, Lee      |  M  |
+| 6 |   769   | Aamodt, Thor Michael |  M  |
+| 7 |   797   |       Aar, Jim       |  M  |
+| 8 |   802   |    Aaran, Abraxas    |  M  |
+| 9 |   808   |    Aard, Frank J.    |  M  |
++---+---------+----------------------+-----+
+
+Table Preview (Last 10 rows):
+
++-------+---------+--------------------------+-----+
+|       | actorid |           name           | sex |
++-------+---------+--------------------------+-----+
+| 98680 | 2748728 |      Ålenius, Inga       |  F  |
+| 98681 | 2748766 | Åström-De Fina, Marianna |  F  |
+| 98682 | 2749009 |   Ólafsdóttir, Katrín    |  F  |
+| 98683 | 2749028 |      Ónodi, Eszter       |  F  |
+| 98684 | 2749144 |      Ôno, Yuka (I)       |  F  |
+| 98685 | 2749162 |      Ôshima, Akiyo       |  F  |
+| 98686 | 2749168 |      Ôshima, Yukari      |  F  |
+| 98687 | 2749204 |       Ôtani, Ikue        |  F  |
+| 98688 | 2749377 |  Örnólfsdóttir, Álfrún   |  F  |
+| 98689 | 2749386 |        Öss, Eniko        |  F  |
++-------+---------+--------------------------+-----+
+Data analysis completed.
+Selected table: writers
+Selecting table 'writers' for analysis.
+DataFrame Info for table writers:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5559 entries, 0 to 5558
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   writerid  5559 non-null   int64 
+ 1   name      5559 non-null   object
+dtypes: int64(1), object(1)
+memory usage: 87.0+ KB
+
+Number of Unique Items in writers:
+writerid    5559
+name        5559
+dtype: int64
+Unique Items in Each Column for table writers:
+      writerid                name
+0           70  Aalmuhammed, Jefri
+1          125          Aaron, Joe
+2          133         Aaron, Paul
+3          340       Abbey, Edward
+4          363  Abbott, George (I)
+...        ...                 ...
+5554    406628       Zweibel, Alan
+5555    406648       Zwick, Edward
+5556    407052        Éluard, Paul
+5557    407159      Ôshima, Nagisa
+5558    407170    Ôtomo, Katsuhiro
+
+[5559 rows x 2 columns]
+Table Preview (First 10 rows):
+
++---+----------+--------------------+
+|   | writerid |        name        |
++---+----------+--------------------+
+| 0 |    70    | Aalmuhammed, Jefri |
+| 1 |   125    |     Aaron, Joe     |
+| 2 |   133    |    Aaron, Paul     |
+| 3 |   340    |   Abbey, Edward    |
+| 4 |   363    | Abbott, George (I) |
+| 5 |   553    |     Abe, Kôbô      |
+| 6 |   718    |   Aberson, Helen   |
+| 7 |   854    | Abraham, Adam (I)  |
+| 8 |   904    |   Abrahams, Jim    |
+| 9 |   910    |   Abrahams, Mort   |
++---+----------+--------------------+
+
+Table Preview (Last 10 rows):
+
++------+----------+-------------------+
+|      | writerid |       name        |
++------+----------+-------------------+
+| 5549 |  406349  | Zucker, David (I) |
+| 5550 |  406353  |   Zucker, Jerry   |
+| 5551 |  406380  |  Zuckmayer, Carl  |
+| 5552 |  406420  | Zulawski, Andrzej |
+| 5553 |  406549  | Zurlini, Valerio  |
+| 5554 |  406628  |   Zweibel, Alan   |
+| 5555 |  406648  |   Zwick, Edward   |
+| 5556 |  407052  |   Éluard, Paul    |
+| 5557 |  407159  |  Ôshima, Nagisa   |
+| 5558 |  407170  | Ôtomo, Katsuhiro  |
++------+----------+-------------------+
+Data analysis completed.

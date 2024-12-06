@@ -1,16 +1,15 @@
 import pandas as pd
-from tabulate import tabulate
 import re
 
-# Initializes the FetchData class with an existing database connection.
+# Initializes FetchData class with an existing database connection
 class FetchData:
     def __init__(self, connection):
         self.connection = connection
-        self.inflation_data = self.get_inflation_data()  # Initialize inflation data
+        self.inflationData = self.inflationData()  # Initialize inflation data
 
-    # Returns inflation data as a DataFrame.
+    # Return inflation data as a DataFrame. Gross revenue values will be adjusted for inflation
     @staticmethod
-    def get_inflation_data():
+    def inflationData():
         return pd.DataFrame({
             'Year': [1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928,
                      1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944,
@@ -28,24 +27,26 @@ class FetchData:
                          3.4]
         }).set_index('Year')
 
-    # Adjusts values in accordance with inflation
-    def calculate_adjusted_value(self, year, value):
+
+    # Adjust values relative to inflation
+    def calcAdjustedValue(self, year, value):
         if pd.isna(value):
             return None
         try:
             year = int(year)
-            self.inflation_data.index = self.inflation_data.index.astype(int)
+            self.inflationData.index = self.inflationData.index.astype(int)
         except ValueError:
             return value
-        if year not in self.inflation_data.index:
+        if year not in self.inflationData.index:
             return value
-        relevant_data = self.inflation_data.loc[year:2023, '% Change'].dropna()
+        relevant_data = self.inflationData.loc[year:2023, '% Change'].dropna()
         inflation_multipliers = 1 + (relevant_data / 100)
         cumulative_multiplier = inflation_multipliers.prod()
         return value * cumulative_multiplier
 
-    # Fetches and processes movie data, calculates adjusted values and % Profit / Loss.
-    def fetch_and_process_movie_data(self):
+
+    # Fetch and process movie data, calculate adjusted values and % Profit / Loss.
+    def fetchAndProcessMovieData(self):
         if self.connection is None:
             print("Error: Database connection not established.")
             return None
@@ -96,11 +97,11 @@ class FetchData:
 
             # adjust budget
             def adjust_budget(row):
-                return self.calculate_adjusted_value(row['year'], row['Budget'])
+                return self.calcAdjustedValue(row['year'], row['Budget'])
 
             # adjust gross revenue
             def adjust_gross_revenue(row):
-                return self.calculate_adjusted_value(row['year'], row['Gross Revenue'])
+                return self.calcAdjustedValue(row['year'], row['Gross Revenue'])
 
             # calculate % Profit / Loss
             def calculate_percentage_profit_loss(row):
@@ -123,12 +124,12 @@ class FetchData:
             filtered['Percentage_Profit_Loss'] = filtered.apply(calculate_percentage_profit_loss, axis=1)
 
             # Concatenate genres for grouped data
-            def concatenate_genres(genre_series):
+            def concat_genres(genre_series):
                 return ", ".join(genre_series)
 
             # Group data by movieid, title, and year
             grouped = filtered.groupby(["movieid", "title", "year"]).agg(
-                genres=("genre", concatenate_genres),
+                genres=("genre", concat_genres),
                 Currency=("Currency", "first"),
                 Budget=("Budget", "first"),
                 Adjusted_Budget=("Adjusted_Budget", "first"),

@@ -2,12 +2,13 @@ from AppGUI import AppGUI
 from FetchData import FetchData
 from ActorSearch import ActorSearch
 from GenreSearch import GenreSearch
-from VisualiseData import VisualiseData
 from DataAnalysis import DataAnalysis
+from VisualiseData import VisualiseData
 from DatabaseAccess import DBConnection_Alchemy
 import tkinter as tk
 
 def main():
+    # Database connection details
     host = "db.relational-data.org"
     user = "guest"
     password = "relational"
@@ -20,14 +21,15 @@ def main():
     # Pass the tuple to the DBConnection class
     relationalDB = DBConnection_Alchemy(db_info)
     fetchData = FetchData(relationalDB.mydb)
-    visualiseData = VisualiseData(relationalDB.mydb)
+    visualise_data_app = VisualiseData(relationalDB.mydb)
 
     # Fetch processed movie data
-    business_and_movie_data = fetchData.fetch_and_process_movie_data()
+    business_and_movie_data = fetchData.fetchAndProcessMovieData()
 
-    # Initialize ActorSearch and GenreSearch
+    # Initialize ActorSearch, GenreSearch, and VisualiseData
     actor_search_app = ActorSearch(relationalDB.mydb)
     genre_search_app = GenreSearch(business_and_movie_data)
+    visualise_data_app = VisualiseData(relationalDB.mydb)
 
     # Initialize Tkinter root
     root = tk.Tk()
@@ -36,7 +38,9 @@ def main():
     app_gui = AppGUI(
         master=root,
         actor_search_app=actor_search_app,
-        genre_search_app=genre_search_app
+        genre_search_app=genre_search_app,
+        visualise_data_app=visualise_data_app,
+        business_and_movie_data=business_and_movie_data,
     )
 
     # Pass AppGUI's `writeToLog` method to DataAnalysis
@@ -45,6 +49,7 @@ def main():
     # Assign DataAnalysis to AppGUI
     app_gui.data_analysis_app = data_analysis_app
 
+    # Run the Tkinter main loop
     root.mainloop()
 
     # Close the connection
